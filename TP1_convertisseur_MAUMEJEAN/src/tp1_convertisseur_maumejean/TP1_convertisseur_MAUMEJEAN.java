@@ -37,27 +37,27 @@ public class TP1_convertisseur_MAUMEJEAN {
                 switch (choice) {
                     case 1:
                         double kelvin = CelciusVersKelvin(temperature);
-                        System.out.println(temperature + " degre Celsius est égal à " + kelvin + " degre Kelvin.");
+                        System.out.println(temperature + " degre Celsius est egal a " + kelvin + " degre Kelvin.");
                         break;
                     case 2:
                         double celsius = KelvinVersCelcius(temperature);
-                        System.out.println(temperature + " degre Kelvin est égal à " + celsius + " degre Celsius.");
+                        System.out.println(temperature + " degre Kelvin est egal a " + celsius + " degre Celsius.");
                         break;
                     case 3:
                         double fahrenheitToCelsius = FarenheitVersCelcius(temperature);
-                        System.out.println(temperature + " degre Fahrenheit est égal à " + fahrenheitToCelsius + " degre Celsius.");
+                        System.out.println(temperature + " degre Fahrenheit est egal a " + fahrenheitToCelsius + " degre Celsius.");
                         break;
                     case 4:
                         double celsiusToFahrenheit = CelciusVersFarenheit(temperature);
-                        System.out.println(temperature + " degre Celsius est égal à " + celsiusToFahrenheit + " degre Fahrenheit.");
+                        System.out.println(temperature + " degre Celsius est egal a " + celsiusToFahrenheit + " degre Fahrenheit.");
                         break;
                     case 5:
                         double fahrenheitToKelvin = FarenheitVersKelvin(temperature);
-                        System.out.println(temperature + " degre Fahrenheit est égal à " + fahrenheitToKelvin + " degre Kelvin.");
+                        System.out.println(temperature + " degre Fahrenheit est egal a " + fahrenheitToKelvin + " degre Kelvin.");
                         break;
                     case 6:
                         double kelvinToFahrenheit = KelvinVersFarenheit(temperature);
-                        System.out.println(temperature + " degre Kelvin est égal à " + kelvinToFahrenheit + " degre Fahrenheit.");
+                        System.out.println(temperature + " degre Kelvin est egal a " + kelvinToFahrenheit + " degre Fahrenheit.");
                         break;
                     default:
                         System.out.println("Choix invalide.");
