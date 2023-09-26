@@ -23,7 +23,7 @@ public class TP1_guessMyNumber_MAUMEJEAN {
         Random generateurAleat = new Random();
         int min, max, nombreAleatoire, nombreDevine, essais = 0;
 
-        System.out.println("Choisissez un niveau de difficulté :");
+        System.out.println("Choisissez un niveau de difficulte :");
         System.out.println("1) Facile (0-100, nombre illimité d'essais)");
         System.out.println("2) Normal (0-100, 10 essais)");
         System.out.println("3) Difficile (0-100, 5 essais)");
