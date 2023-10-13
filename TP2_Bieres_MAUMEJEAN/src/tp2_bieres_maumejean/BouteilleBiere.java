@@ -24,15 +24,17 @@ public class BouteilleBiere {
     public boolean Décapsuler() {
         if ( ouverte = false) {
             ouverte = true;
+            return ouverte;
         }
         else {
             System.out.println( " « erreur : biere déjà ouverte ");
             ouverte = false;
+            return ouverte;
         }
     }
     
   
-    public BouteilleBiere(String unNom, double unDegre, String, uneBrasserie) {
+    public BouteilleBiere(String unNom, double unDegre, String uneBrasserie) {
         nom = unNom;
         degreAlcool = unDegre;
         brasserie = uneBrasserie;
