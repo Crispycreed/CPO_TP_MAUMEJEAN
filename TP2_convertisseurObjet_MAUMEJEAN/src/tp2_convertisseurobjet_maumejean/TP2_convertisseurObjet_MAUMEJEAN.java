@@ -15,7 +15,9 @@ public class TP2_convertisseurObjet_MAUMEJEAN {
      */
     public static void main(String[] args) { 
         
- 
+        Convertisseur convertion1 = new Convertisseur(15) ;
+        convertion1.CelciusVersKelvin() ;
+        System.out.println(convertion1) ;
    
 
     }
