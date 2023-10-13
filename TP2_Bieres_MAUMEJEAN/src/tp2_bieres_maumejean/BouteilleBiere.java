@@ -34,7 +34,7 @@ public class BouteilleBiere {
     }
     
   
-    public BouteilleBiere(String unNom, double unDegre, String uneBrasserie) {
+    public BouteilleBiere(String unNom, double unDegre, String uneBrasserie, boolean uneouverture) {
         nom = unNom;
         degreAlcool = unDegre;
         brasserie = uneBrasserie;
