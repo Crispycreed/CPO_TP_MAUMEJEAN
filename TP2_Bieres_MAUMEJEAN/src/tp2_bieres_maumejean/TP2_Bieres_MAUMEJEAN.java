@@ -34,8 +34,13 @@ public class TP2_Bieres_MAUMEJEAN {
         
         BouteilleBiere uneBiere = new BouteilleBiere("Cuvée des trolls", 7.0 ,"Dubuisson") ;
         BouteilleBiere uneBiere2 = new BouteilleBiere("Leffe", 6.6 ,"Abbaye de Leffe") ;
+        
+        BouteilleBiere uneBiere3  = new BouteilleBiere("Sampe", 8.3 ,"Mas Du Pas De Loche") ;
 
         System.out.println(uneBiere) ;
+        
+        uneBiere3.Décapsuler();
+        System.out.println(uneBiere3) ;
     }
     
 }
