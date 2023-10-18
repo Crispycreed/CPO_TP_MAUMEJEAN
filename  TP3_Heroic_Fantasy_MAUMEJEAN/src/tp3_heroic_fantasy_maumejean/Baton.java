@@ -8,17 +8,17 @@ package tp3_heroic_fantasy_maumejean;
  *
  * @author MAUMEJEAN DENIS
  */
-public abstract class Arme {
+public class Baton {
     String Nom ;
-    int Attaque ;
+    int Age ;
 
 
-    public Arme(String Nom, int Attaque) {
+    public Baton(String Nom, int Attaque) {
         this.Nom = Nom;
-        this.Attaque = Attaque;
+        this.Age = Age;
 
     @Override
     public String toString() {
-        return "Arme{" + "Nom=" + Nom + ", Attaque=" + Attaque +"}";
+        return "Baton{" + "Nom=" + Nom + ", Age=" + Age +"}";
     }
 }
