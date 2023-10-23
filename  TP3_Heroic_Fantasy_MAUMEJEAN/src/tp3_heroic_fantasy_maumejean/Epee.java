@@ -8,12 +8,12 @@ package tp3_heroic_fantasy_maumejean;
  *
  * @author MAUMEJEAN DENIS
  */
-public class Epee {
+public class Epee extends Arme {
     String Nom ;
-    int Finesse;
+    double Finesse;
 
 
-    public Epee(String Nom, int Attaque) {
+    public Epee (String Nom, double Finesse) {
         this.Nom = Nom;
         this.Finesse = Finesse;
 

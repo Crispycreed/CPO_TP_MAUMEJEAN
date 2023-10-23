@@ -8,12 +8,12 @@ package tp3_heroic_fantasy_maumejean;
  *
  * @author MAUMEJEAN DENIS
  */
-public class Baton {
+public class Baton extends Arme {
     String Nom ;
-    int Age ;
+    double Age ;
 
 
-    public Baton(String Nom, int Attaque) {
+    public Baton(String Nom, double Age) {
         this.Nom = Nom;
         this.Age = Age;
 
