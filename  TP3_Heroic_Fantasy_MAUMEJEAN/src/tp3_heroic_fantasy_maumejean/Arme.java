@@ -20,6 +20,14 @@ public abstract class Arme {
 
     }
     
+    public String getNom() {
+        return Nom;
+    }
+    
+    public int getAttaque() {
+        return Attaque;
+    }
+    
     @Override
     public String toString() {
         return "Arme{" + "Nom=" + Nom + ", Attaque=" + Attaque +"}";

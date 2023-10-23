@@ -10,10 +10,10 @@ package tp3_heroic_fantasy_maumejean;
  */
 public class Epee extends Arme {
     String Nom ;
-    double Finesse;
+    int Finesse;
 
 
-    public Epee(String Nom,int attaque , double Finesse) {
+    public Epee(String Nom,int attaque , int Finesse) {
         super(Nom, attaque);
         this.Nom = Nom;
         this.Finesse = Finesse;

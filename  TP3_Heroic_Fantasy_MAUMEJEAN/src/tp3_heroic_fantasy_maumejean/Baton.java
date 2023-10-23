@@ -10,10 +10,10 @@ package tp3_heroic_fantasy_maumejean;
  */
 public class Baton extends Arme {
     String Nom ;
-    double Age ;
+    int Age ;
 
 
-    public Baton(String Nom, int attaque, double Age) {
+    public Baton(String Nom, int attaque, int Age) {
         super(Nom, attaque);
         this.Nom = Nom;
         this.Age = Age;
