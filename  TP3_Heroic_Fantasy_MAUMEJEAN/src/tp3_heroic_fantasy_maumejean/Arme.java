@@ -17,6 +17,9 @@ public abstract class Arme {
         this.Nom = Nom;
         this.Attaque = Attaque;
 
+
+    }
+    
     @Override
     public String toString() {
         return "Arme{" + "Nom=" + Nom + ", Attaque=" + Attaque +"}";

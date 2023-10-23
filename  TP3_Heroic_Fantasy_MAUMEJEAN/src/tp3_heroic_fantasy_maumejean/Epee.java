@@ -13,10 +13,12 @@ public class Epee extends Arme {
     double Finesse;
 
 
-    public Epee (String Nom, double Finesse) {
+    public Epee(String Nom,int attaque , double Finesse) {
+        super(Nom, attaque);
         this.Nom = Nom;
         this.Finesse = Finesse;
-
+    }
+    
     @Override
     public String toString() {
         return "Epee{" + "Nom=" + Nom + ", Finesse=" + Finesse +"}";

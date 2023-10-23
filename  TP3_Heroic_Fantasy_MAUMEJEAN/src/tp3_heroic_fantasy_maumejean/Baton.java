@@ -13,10 +13,12 @@ public class Baton extends Arme {
     double Age ;
 
 
-    public Baton(String Nom, double Age) {
+    public Baton(String Nom, int attaque, double Age) {
+        super(Nom, attaque);
         this.Nom = Nom;
         this.Age = Age;
-
+    }
+    
     @Override
     public String toString() {
         return "Baton{" + "Nom=" + Nom + ", Age=" + Age +"}";
