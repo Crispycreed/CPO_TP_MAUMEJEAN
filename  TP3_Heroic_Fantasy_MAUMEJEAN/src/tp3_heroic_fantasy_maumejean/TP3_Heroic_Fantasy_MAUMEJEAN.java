@@ -20,7 +20,7 @@ public class TP3_Heroic_Fantasy_MAUMEJEAN {
         Arme Epee1 = new Epee ("Excalibur", 7, 5) ;
         Arme Epee2 = new Epee ("Durandal", 4, 5) ;
         
-        Arme Baton1 = new Baton ("Chêne", 4, 5) ;
+        Arme Baton1 = new Baton ("Chene", 4, 5) ;
         Arme Baton2 = new Baton ("Charme", 5, 6) ;
         
         
