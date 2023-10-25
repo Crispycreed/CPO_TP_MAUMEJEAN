@@ -35,8 +35,8 @@ public class CelluleLumineuse {
 
 
     /**
-     * Méthode pour vérifier si la cellule est éteinte
-     * @return etat = false 
+     * Méthode pour vérifier si la cellule est éteinte ou allumée
+     * @return etteint : etat = true ;  allumée etat = false
      */
     public boolean estEteint() {
         return !etat;

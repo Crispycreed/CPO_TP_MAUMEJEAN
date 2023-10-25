@@ -13,20 +13,20 @@ package lightoff_maumejean_version_console;
  * @author MAUMEJEAN DENIS
  */
 public class GrilleDeJeu {
-    private CelluleLumineuse[][] matriceCellules;
-    private int nbLignes;
-    private int nbColonnes;
+    CelluleLumineuse[][] matriceCellules;
+    int nbLignes;
+    int nbColonnes;
 
     /**
      * Constructeur de la classe GrilleDeJeu.
-     * @param p_nbLignes Le nombre de lignes de la grille.
-     * @param p_nbColonnes Le nombre de colonnes de la grille.
+     *
+     * @param p_nbLignes     Le nombre de lignes de la grille.
+     * @param p_nbColonnes   Le nombre de colonnes de la grille.
      */
     public GrilleDeJeu(int p_nbLignes, int p_nbColonnes) {
         nbLignes = p_nbLignes;
         nbColonnes = p_nbColonnes;
         matriceCellules = new CelluleLumineuse[nbLignes][nbColonnes];
-
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 matriceCellules[i][j] = new CelluleLumineuse();
@@ -44,25 +44,46 @@ public class GrilleDeJeu {
             }
         }
     }
+    
+    /**
+    * Active toutes les cellules d'une ligne spécifique de la grille.
+    * @param idLigne Le numéro de la ligne à activer.
+    */
+    public void activerLigneDeCellules(int idLigne) {
+        for (int colonne = 0; colonne < nbColonnes; colonne++) {
+            matriceCellules[idLigne][colonne].activerCellule();
+        }
+    }
 
     /**
-     * Redéfinition de la méthode toString pour afficher l'état de la grille 
-     * sous forme d'une représentation visuelle organisée.
-     * @return Une chaîne de caractères représentant l'état de la grille.
-     */
-
-    @Override
-    public String toString() {
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < nbLignes; i++) {
-            result.append("| ");
-            for (int j = 0; j < nbColonnes; j++) {
-                result.append(matriceCellules[i][j].getEtat() ? "X" : "O");
-                result.append(" | ");
-            }
-            result.append("\n");
+     * Active toutes les cellules d'une colonne spécifique de la grille.
+    * @param idColonne Le numéro de la colonne à activer.
+    */
+    public void activerColonneDeCellules(int idColonne) {
+        for (int ligne = 0; ligne < nbLignes; ligne++) {
+            matriceCellules[ligne][idColonne].activerCellule();
         }
-        return result.toString();
     }
-}
+    
+    
+    /**
+    * Active la diagonale descendante de la grille en allumant les cellules correspondantes.
+    */
+    public void activerDiagonaleDescendante() {
+        for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) {
+            matriceCellules[i][i].activerCellule();
+        }
+    }
 
+    /**
+    * Active la diagonale montante de la grille en allumant les cellules correspondantes.
+    */
+    public void activerDiagonaleMontante() {
+        for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) {
+            matriceCellules[i][nbColonnes - 1 - i].activerCellule();
+        }
+    }
+    
+    
+
+}

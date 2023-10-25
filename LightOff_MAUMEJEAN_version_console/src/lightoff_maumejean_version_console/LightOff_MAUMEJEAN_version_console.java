@@ -28,6 +28,21 @@ public class LightOff_MAUMEJEAN_version_console {
         System.out.println("Etat de la cellule 2 inchange est: "+ cellule2);
         
         
+        GrilleDeJeu grille = new GrilleDeJeu();
+        System.out.println(grille);
+        grille.activerLigneDeCellules(1); // Active la première ligne
+        System.out.println(grille); // Vérifiez que la ligne est activée
+        grille.activerColonneDeCellules(2); // Active la deuxième colonne
+        System.out.println(grille); // Vérifiez que la colonne est activée
+        grille.activerDiagonaleDescendante(); // Active la diagonale descendante
+        System.out.println(grille); // Vérifiez que la diagonale est activée
+        grille.activerDiagonaleMontante(); // Active la diagonale montante
+        System.out.println(grille); // Vérifiez que la diagonale montante est activée
+        grille.activerLigneColonneOuDiagonaleAleatoire();
+        System.out.println(grille); // Vérifiez que l'une des lignes, colonnes ou diagonales est activée de manière aléatoire
+
+
+
     }
     
 }
