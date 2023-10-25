@@ -149,17 +149,41 @@ public class GrilleDeJeu {
         return false; // Si au moins une cellule est allumée, retourne false
     }
 
+    /**
+    * Génère une représentation textuelle de la grille avec des indices pour les lignes et les colonnes,
+    * ainsi que des caractères 'X' et 'O' pour représenter l'état des cellules.
+    *
+    * @return Une chaîne de caractères représentant l'état de la grille.
+    */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("  |");
+        for (int i = 0; i < nbColonnes; i++) {
+            sb.append(" " + i + " |");
+        }
+        sb.append("\n");
+        sb.append("--|");
+        for (int i = 0; i < nbColonnes; i++) {
+            sb.append("---|");
+        }
+        sb.append("\n");
         for (int i = 0; i < nbLignes; i++) {
+            sb.append(i + " |");
             for (int j = 0; j < nbColonnes; j++) {
-                sb.append(matriceCellules[i][j].getEtat() ? "X" : "O").append(" ");
+                sb.append(" " + (matriceCellules[i][j].getEtat() ? "X" : "O") + " |");
+            }
+            sb.append("\n");
+            sb.append("--|");
+            for (int j = 0; j < nbColonnes; j++) {
+                sb.append("---|");
             }
             sb.append("\n");
         }
+    
         return sb.toString();
     }
+
 
 
 }
