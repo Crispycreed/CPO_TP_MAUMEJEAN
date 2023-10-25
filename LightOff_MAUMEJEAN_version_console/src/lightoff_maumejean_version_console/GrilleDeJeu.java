@@ -53,21 +53,18 @@ public class GrilleDeJeu {
      */
     public void activerLigneColonneOuDiagonaleAleatoire() {
         Random random = new Random();
-        int choice = random.nextInt(3); // Generates a random number between 0 and 2
+        int choice = random.nextInt(3);
 
         switch (choice) {
             case 0:
-                // Activate a random row
                 int randomRow = random.nextInt(nbLignes);
                 activerLigneDeCellules(randomRow);
                 break;
             case 1:
-                // Activate a random column
                 int randomCol = random.nextInt(nbColonnes);
                 activerColonneDeCellules(randomCol);
                 break;
             case 2:
-                // Activate a random diagonal
                 if (random.nextBoolean()) {
                     activerDiagonaleDescendante();
                 } else {
@@ -75,7 +72,6 @@ public class GrilleDeJeu {
                 }
                 break;
             default:
-                // This should not happen, but you can handle it if needed.
                 break;
         }
     }
