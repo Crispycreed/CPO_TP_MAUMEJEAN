@@ -36,7 +36,7 @@ public class CelluleLumineuse {
 
     /**
      * Méthode pour vérifier si la cellule est éteinte
-     * @return
+     * @return etat = false 
      */
     public boolean estEteint() {
         return !etat;
@@ -45,7 +45,7 @@ public class CelluleLumineuse {
 
     /**
      * Méthode pour obtenir l'état actuel de la cellule (true si allumée, false si éteinte)
-     * @return
+     * @return etat
      */
     public boolean getEtat() {
         return etat;
@@ -53,7 +53,7 @@ public class CelluleLumineuse {
 
     /**
      * définition de la méthode toString pour afficher l'état de la cellule
-     * @return
+     * @return x si etat = false O si etat = true
      */
     @Override
     public String toString() {
