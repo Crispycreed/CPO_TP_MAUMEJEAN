@@ -139,16 +139,27 @@ public class GrilleDeJeu {
     * @return true si toutes les cellules sont éteintes, false sinon.
     */
     public boolean cellulesToutesEteintes() {
-    for (int ligne = 0; ligne < nbLignes; ligne++) {
-        for (int colonne = 0; colonne < nbColonnes; colonne++) {
-            if (matriceCellules[ligne][colonne].estEteint()) {
-                return true; // Si aucune cellule n'est allumée, retourne true
+        for (int ligne = 0; ligne < nbLignes; ligne++) {
+            for (int colonne = 0; colonne < nbColonnes; colonne++) {
+                if (matriceCellules[ligne][colonne].estEteint()) {
+                    return true; // Si aucune cellule n'est allumée, retourne true
+                }
             }
         }
+        return false; // Si au moins une cellule est allumée, retourne false
     }
-    return false; // Si au moins une cellule est allumée, retourne false
-}
 
-    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < nbLignes; i++) {
+            for (int j = 0; j < nbColonnes; j++) {
+                sb.append(matriceCellules[i][j].getEtat() ? "X" : "O").append(" ");
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
 
 }
