@@ -15,36 +15,9 @@ public class LightOff_MAUMEJEAN_version_console {
      */
     public static void main(String[] args) {
         
-        CelluleLumineuse cellule1 = new CelluleLumineuse();
-        CelluleLumineuse cellule2 = new CelluleLumineuse();
-
-        System.out.println("Etat initial de la cellule 1 : " + cellule1);
-        System.out.println("Etat initial de la cellule 2 : " + cellule2); 
-
-        cellule1.activerCellule();
-        System.out.println("Etat de la cellule 1 apres activation : "+ cellule1);
+        Partie partie1 = new Partie(6, 6);
+        partie1.initialiserPartie(10);
+        partie1.lancerPartie();
         
-        cellule2.getEtat();
-        System.out.println("Etat de la cellule 2 inchange est: "+ cellule2);
-        
-        int nbLignes = 10;
-        int nbColonnes = 10;
-                
-        GrilleDeJeu grille = new GrilleDeJeu(nbLignes, nbColonnes);
-        System.out.println(grille);
-        grille.activerLigneDeCellules(1); // Active la première ligne
-        System.out.println(grille); // Vérifiez que la ligne est activée
-        grille.activerColonneDeCellules(2); // Active la deuxième colonne
-        System.out.println(grille); // Vérifiez que la colonne est activée
-        grille.activerDiagonaleDescendante(); // Active la diagonale descendante
-        System.out.println(grille); // Vérifiez que la diagonale est activée
-        grille.activerDiagonaleMontante(); // Active la diagonale montante
-        System.out.println(grille); // Vérifiez que la diagonale montante est activée
-        grille.activerLigneColonneOuDiagonaleAleatoire();
-        System.out.println(grille); // Vérifiez que l'une des lignes, colonnes ou diagonales est activée de manière aléatoire
-
-
-
     }
-    
 }

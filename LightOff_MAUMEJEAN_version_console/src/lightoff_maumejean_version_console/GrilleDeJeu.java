@@ -138,11 +138,11 @@ public class GrilleDeJeu {
         for (int ligne = 0; ligne < nbLignes; ligne++) {
             for (int colonne = 0; colonne < nbColonnes; colonne++) {
                 if (matriceCellules[ligne][colonne].estEteint()) {
-                    return true; // Si aucune cellule n'est allumée, retourne true
+                    return false;
                 }
             }
         }
-        return false; // Si au moins une cellule est allumée, retourne false
+        return true;
     }
 
     /**
