@@ -12,17 +12,31 @@ import java.util.Scanner;
 public class Partie {
     private GrilleDeJeu grille; // Référence à la grille de jeu
     private int nbCoups; // Nombre de coups joués par le joueur
-    
-    
+
+    /**
+     * Constructeur de la classe Partie.
+     *
+     * @param nbLignes     Le nombre de lignes de la grille.
+     * @param nbColonnes   Le nombre de colonnes de la grille.
+     */
     public Partie(int nbLignes, int nbColonnes) {
         grille = new GrilleDeJeu(nbLignes, nbColonnes);
         nbCoups = 0;
     }
 
+    /**
+     * Initialise la partie en mélangeant la grille de jeu de manière aléatoire.
+     *
+     * @param nbTours Le nombre de tours de mélange.
+     */
     public void initialiserPartie(int nbTours) {
         grille.melangerMatriceAleatoirement(nbTours);
     }
 
+    /**
+     * Lance une partie du jeu LightOff en permettant au joueur d'interagir avec la grille.
+     * Le jeu continue tant que toutes les cellules ne sont pas éteintes.
+     */
     public void lancerPartie() {
         Scanner scanner = new Scanner(System.in);
 
@@ -50,7 +64,7 @@ public class Partie {
                     break;
                 case 'D':
                     if (index == 0) {
-                    grille.activerDiagonaleDescendante();
+                        grille.activerDiagonaleDescendante();
                     } else if (index == 1) {
                         grille.activerDiagonaleMontante();
                     } else {
