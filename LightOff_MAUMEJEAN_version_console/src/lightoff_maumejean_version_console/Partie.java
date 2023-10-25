@@ -4,10 +4,10 @@
  */
 package lightoff_maumejean_version_console;
 
+
 /**
- *
- * @author MAUMEJEAN DENIS
+ * La classe Partie représente une partie du jeu LightOff en utilisant une grille de cellules lumineuses.
+ * Cette classe facilite l'interaction entre le joueur et la grille, permettant de jouer au jeu LightOff.
  */
 public class Partie {
-    
 }
