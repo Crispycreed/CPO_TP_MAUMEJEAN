@@ -45,7 +45,7 @@ public class CelluleLumineuse {
 
     /**
      * Méthode pour obtenir l'état actuel de la cellule (true si allumée, false si éteinte)
-     * @return etat
+     * @return etat 
      */
     public boolean getEtat() {
         return etat;

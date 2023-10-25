@@ -27,8 +27,10 @@ public class LightOff_MAUMEJEAN_version_console {
         cellule2.getEtat();
         System.out.println("Etat de la cellule 2 inchange est: "+ cellule2);
         
-        
-        GrilleDeJeu grille = new GrilleDeJeu();
+        int nbLignes = 10;
+        int nbColonnes = 10;
+                
+        GrilleDeJeu grille = new GrilleDeJeu(nbLignes, nbColonnes);
         System.out.println(grille);
         grille.activerLigneDeCellules(1); // Active la première ligne
         System.out.println(grille); // Vérifiez que la ligne est activée
