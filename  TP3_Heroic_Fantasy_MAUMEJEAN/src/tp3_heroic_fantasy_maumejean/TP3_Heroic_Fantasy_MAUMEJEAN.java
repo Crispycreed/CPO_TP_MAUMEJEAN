@@ -7,6 +7,10 @@ package tp3_heroic_fantasy_maumejean;
 import Armes.Epee;
 import Armes.Baton;
 import Armes.Arme;
+import Personnages.Personnages;
+import Personnages.Magicien;
+import Personnages.Guerrier;
+import Armes.Arme.*;
 import java.util.ArrayList;
 
 /**
@@ -27,24 +31,65 @@ public class TP3_Heroic_Fantasy_MAUMEJEAN {
         Arme Baton2 = new Baton ("Charme", 5, 6) ;
         
         
-        ArrayList<Arme> liste = new ArrayList<Arme>();
+        ArrayList<Arme> n_arme = new ArrayList<Arme>();
+        n_arme.add(Epee1);
+        n_arme.add(Epee2);
+        n_arme.add(Baton1);
+        n_arme.add(Baton2);
         
-        liste.add(Epee1);
-        liste.add(Epee2);
-        
-        liste.add(Baton1);
-        liste.add(Baton2);
-        
-        int taille = liste.size();
-        System.out.println("Taille du vecteur : " + taille);
-        
-        for (int i = 0; i < liste.size(); i++) {
-            Arme arme = liste.get(i);
-            System.out.println("Arme : " + arme.getNom());
-            System.out.println("Degats : " + arme.getAttaque());
-            System.out.println();
+        int taille = n_arme.size();
+        int longueur=taille-1;
+        for (int i=0 ; i<longueur; i++){
+            System.out.println(n_arme.get(i));
         }
+        
+        Magicien magi1 = new Magicien ("Gandalf", 65, true);
+        System.out.println(n_arme.get(taille-1));
+        Magicien magi2 = new Magicien ("Garcimor", 44, false);
+        Guerrier g1 = new Guerrier ("Conan", 78, false);
+        Guerrier g2 = new Guerrier ("Lannister", 45, true);
+        
+        ArrayList<Personnages> tab_p = new ArrayList<Personnages>();
+        tab_p.add(magi1);
+        tab_p.add(magi2);
+        tab_p.add(g1);
+        tab_p.add(g2);
+        
+        int taille2 =tab_p.size();
+        
+        int longueur2=taille2-1;
+        for (int i=0 ; i<longueur2; i++){
+            System.out.println(tab_p.get(i));
+            
+        
+        Guerrier g3 = new Guerrier("oceane le troll", 2, false);
+        Magicien m3 = new Magicien ("jules le gobelin", 8, false);
+        Baton baton10 = new Baton ("branche", 5 , 5);
+        Baton baton11 = new Baton ("branche2", 5 , 5);
+        Baton baton12 = new Baton ("branche3", 5 , 5);
+        
+        Epee épée10 = new Epee ("kalisce", 5, 6);
+        Epee épée11 = new Epee ("kalisce2", 5, 6);
+        Epee épée12 = new Epee ("kalisce3", 5, 6);
+        
+        g3.ajouter_arme(épée10);
+        g3.ajouter_arme(épée11);
+        g3.ajouter_arme(baton10);
+        
+        m3.ajouter_arme(baton11);
+        m3.ajouter_arme(baton12);
+        m3.ajouter_arme(épée12);
 
+        g3.équiper_arme("kalisce");
+        System.out.println("ici");
+        System.out.println(g3);
+        System.out.println("ici");
+        
+        
+        
+        
+        
     }
     
+}
 }
