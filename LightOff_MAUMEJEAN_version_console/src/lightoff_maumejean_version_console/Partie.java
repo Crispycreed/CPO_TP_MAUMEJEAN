@@ -93,15 +93,18 @@ public class Partie {
                     } else if (index == 1) {
                         grille.activerDiagonaleMontante();
                     } else {
-                        System.out.println("Index de diagonale invalide. Utilisez 0 pour descendante ou 1 pour montante.");
+                        System.out.println("\u001B[31m" + "Index de diagonale invalide. Utilisez 0 pour descendante ou 1 pour montante." + "\u001B[0m");
+
                     }
                     break;
                 default:
-                    System.out.println("Action invalide. Utilisez L pour ligne, C pour colonne ou D pour diagonale.");
+                    System.out.println("\u001B[31m" + "Action invalide. Utilisez L pour ligne, C pour colonne ou D pour diagonale." + "\u001B[0m");
+
             }
             nbCoups++;
         }
 
-        System.out.println("Toutes les cellules sont eteintes ! Nombre de coups : " + nbCoups);
+        System.out.println("\u001B[32m" + "Toutes les cellules sont eteintes ! Nombre de coups : " + nbCoups + "\u001B[0m");
+
     }
 }
