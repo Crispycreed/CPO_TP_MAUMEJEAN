@@ -152,15 +152,18 @@ public class GrilleDeJeu {
     * @return le nombre de cellules encore allumé.
     */
     public int combiendecellulesencoreallumés() {
-        int nbrCellulesEncoreAllumés = 0;
+        int ntotalcellules = nbLignes*nbColonnes ;
+        int nbrCelluleseteintes = 0;
 
         for (int ligne = 0; ligne < nbLignes; ligne++) {
             for (int colonne = 0; colonne < nbColonnes; colonne++) {
                 if (!matriceCellules[ligne][colonne].estEteint()) { 
-                    nbrCellulesEncoreAllumés++;
+                    nbrCelluleseteintes++;
                 }
             }
         }
+        
+        int nbrCellulesEncoreAllumés = ntotalcellules - nbrCelluleseteintes ;
 
         return nbrCellulesEncoreAllumés;
     }
