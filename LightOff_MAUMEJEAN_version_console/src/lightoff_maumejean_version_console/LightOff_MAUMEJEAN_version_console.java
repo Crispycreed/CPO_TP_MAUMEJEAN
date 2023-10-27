@@ -15,8 +15,11 @@ public class LightOff_MAUMEJEAN_version_console {
      */
     public static void main(String[] args) {
         
-        Partie partie1 = new Partie(6, 6);
-        partie1.initialiserPartie(10);
+        
+        
+        
+        Partie partie1 = new Partie();
+        partie1.initialiserPartie();
         partie1.lancerPartie();
         
     }

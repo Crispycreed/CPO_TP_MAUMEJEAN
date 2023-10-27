@@ -19,9 +19,25 @@ public class Partie {
      * @param nbLignes     Le nombre de lignes de la grille.
      * @param nbColonnes   Le nombre de colonnes de la grille.
      */
-    public Partie(int nbLignes, int nbColonnes) {
-        grille = new GrilleDeJeu(nbLignes, nbColonnes);
-        nbCoups = 0;
+    public Partie() {
+        Scanner scanner = new Scanner(System.in);
+
+        int nbLignes;
+        int nbColonnes;
+        System.out.print("Entrez le nombre de Lignes et de Colonnes (séparés par une virgule) : ");
+    
+        String input = scanner.nextLine();
+        String[] parts = input.split(",");
+
+        if (parts.length == 2) {
+            nbLignes = Integer.parseInt(parts[0].trim());
+            nbColonnes = Integer.parseInt(parts[1].trim());
+
+            grille = new GrilleDeJeu(nbLignes, nbColonnes);
+            nbCoups = 0;
+        } else {
+            System.out.println("Veuillez entrer les valeurs au format 'lignes,colonnes'.");
+        }
     }
 
     /**
@@ -29,7 +45,12 @@ public class Partie {
      *
      * @param nbTours Le nombre de tours de mélange.
      */
-    public void initialiserPartie(int nbTours) {
+    public void initialiserPartie() {
+        Scanner scanner = new Scanner(System.in);
+
+        int nbTours;
+        System.out.print("Entrez le nombre de Tour : ");
+        nbTours = scanner.nextInt();
         grille.melangerMatriceAleatoirement(nbTours);
     }
 
