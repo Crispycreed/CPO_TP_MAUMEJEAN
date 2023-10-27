@@ -64,7 +64,10 @@ public class Partie {
         while (!grille.cellulesToutesEteintes()) {          
             System.out.println("Etat actuel de la grille :");
             System.out.println(grille.toString());
-            System.out.println("Vous etes au coup : " + (nbCoups+1) );
+            
+            int nbrCellulesEncoreAllumés = grille.combiendecellulesencoreallumés() ;
+            
+            System.out.println("Vous etes au coup : " + (nbCoups+1) + ", Il reste : " + nbrCellulesEncoreAllumés + " cellules Allume");
 
             System.out.println("Entrez un coup (ligne, colonne ou diagonale) : ");
             String coup = scanner.nextLine();

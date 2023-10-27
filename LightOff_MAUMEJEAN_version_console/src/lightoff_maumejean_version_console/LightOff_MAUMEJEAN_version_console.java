@@ -14,10 +14,6 @@ public class LightOff_MAUMEJEAN_version_console {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        
-        
-        
         Partie partie1 = new Partie();
         partie1.initialiserPartie();
         partie1.lancerPartie();

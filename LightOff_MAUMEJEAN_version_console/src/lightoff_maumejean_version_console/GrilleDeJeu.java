@@ -144,6 +144,28 @@ public class GrilleDeJeu {
         }
         return true;
     }
+    
+    
+    /**
+    * Vérifie combien de cellules de la grille sont encore allumé.
+    *
+    * @return le nombre de cellules encore allumé.
+    */
+    public int combiendecellulesencoreallumés() {
+        int nbrCellulesEncoreAllumés = 0;
+
+        for (int ligne = 0; ligne < nbLignes; ligne++) {
+            for (int colonne = 0; colonne < nbColonnes; colonne++) {
+                if (!matriceCellules[ligne][colonne].estEteint()) { 
+                    nbrCellulesEncoreAllumés++;
+                }
+            }
+        }
+
+        return nbrCellulesEncoreAllumés;
+    }
+
+
 
     /**
     * Génère une représentation textuelle de la grille avec des indices pour les lignes et les colonnes,
