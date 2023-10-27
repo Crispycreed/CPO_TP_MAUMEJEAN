@@ -24,7 +24,7 @@ public class Partie {
 
         int nbLignes;
         int nbColonnes;
-        System.out.print("Entrez le nombre de Lignes et de Colonnes (séparés par une virgule) : ");
+        System.out.print("Entrez le nombre de Lignes et de Colonnes (separes par une virgule) : ");
     
         String input = scanner.nextLine();
         String[] parts = input.split(",");
@@ -49,7 +49,7 @@ public class Partie {
         Scanner scanner = new Scanner(System.in);
 
         int nbTours;
-        System.out.print("Entrez le nombre de Tour : ");
+        System.out.print("Entrez le nombre de Tours de la matrice : ");
         nbTours = scanner.nextInt();
         grille.melangerMatriceAleatoirement(nbTours);
     }
@@ -60,10 +60,11 @@ public class Partie {
      */
     public void lancerPartie() {
         Scanner scanner = new Scanner(System.in);
-
-        while (!grille.cellulesToutesEteintes()) {
+                
+        while (!grille.cellulesToutesEteintes()) {          
             System.out.println("Etat actuel de la grille :");
             System.out.println(grille.toString());
+            System.out.println("Vous etes au coup : " + (nbCoups+1) );
 
             System.out.println("Entrez un coup (ligne, colonne ou diagonale) : ");
             String coup = scanner.nextLine();
@@ -98,6 +99,6 @@ public class Partie {
             nbCoups++;
         }
 
-        System.out.println("Toutes les cellules sont éteintes ! Nombre de coups : " + nbCoups);
+        System.out.println("Toutes les cellules sont eteintes ! Nombre de coups : " + nbCoups);
     }
 }
