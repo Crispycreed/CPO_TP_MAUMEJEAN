@@ -12,7 +12,8 @@ import javax.swing.JButton;
  * @author MAUMEJEAN DENIS
  */
 public class FenetrePrincipale extends javax.swing.JFrame {
-
+    GrilleDeJeu grille;
+    int nbCoups;
     /**
      * Creates new form FenetrePrincipale
      */
@@ -23,28 +24,20 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         
         for (int i=0; i < nbLignes; i++) {
-            for (int j=0; j < nbColonnes; j++ ) {
-                JButton bouton_cellule = new JButton(); // création d'un bouton
-                
-                this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
-                
-                PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
-            }
-            
-
-
+        for (int j=0; j < nbColonnes; j++ ) {
+        CelluleGraphique bouton_cellule = new CelluleGraphique( grille.matriceCellules[i][j], 36,36);
+        PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+        }
         
-        }
-    
-        GrilleDeJeu grille;
-        int nbCoups; 
-
-    
-        public void initialiserPartie() {
-            grille.eteindreToutesLesCellules();
-            grille.melangerMatriceAleatoirement(10);
-        }
+        this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
+}
     }
+    
+    public void initialiserPartie() {
+        grille.eteindreToutesLesCellules();
+        grille.melangerMatriceAleatoirement(10);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,17 +105,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             public void run() {
                 new FenetrePrincipale().setVisible(true);
             }
-            
-            
-            
-            
-      
-        
-        
-        
-        
-        
-        
         });
     }
 
