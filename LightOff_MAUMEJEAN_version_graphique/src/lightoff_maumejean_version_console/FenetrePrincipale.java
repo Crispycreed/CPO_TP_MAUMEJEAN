@@ -14,14 +14,18 @@ import javax.swing.JButton;
 public class FenetrePrincipale extends javax.swing.JFrame {
     GrilleDeJeu grille;
     int nbCoups;
+    int nbLignes = 10;
+    int nbColonnes = 10;
     /**
      * Creates new form FenetrePrincipale
      */
     public FenetrePrincipale() {
         initComponents();
-        int nbLignes = 10;
-        int nbColonnes = 10;
+        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, nbColonnes*40, nbLignes*40));
+        this.pack();
+        this.revalidate();
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
+        this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
         
         for (int i=0; i < nbLignes; i++) {
             for (int j=0; j < nbColonnes; j++ ) {
@@ -29,7 +33,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
         
-        this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
+        
         }
     }
     
@@ -49,6 +53,32 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void initComponents() {
 
         PanneauGrille = new javax.swing.JPanel();
+        btnLigne0 = new javax.swing.JButton();
+        btnLigne1 = new javax.swing.JButton();
+        btnLigne2 = new javax.swing.JButton();
+        btnLigne3 = new javax.swing.JButton();
+        btnLigne4 = new javax.swing.JButton();
+        btnLigne5 = new javax.swing.JButton();
+        btnLigne6 = new javax.swing.JButton();
+        btnLigne7 = new javax.swing.JButton();
+        btnLigne8 = new javax.swing.JButton();
+        btnLigne9 = new javax.swing.JButton();
+        btnColonne9 = new javax.swing.JButton();
+        btnColonne8 = new javax.swing.JButton();
+        btnColonne7 = new javax.swing.JButton();
+        btnColonne6 = new javax.swing.JButton();
+        btnColonne5 = new javax.swing.JButton();
+        btnColonne4 = new javax.swing.JButton();
+        btnColonne3 = new javax.swing.JButton();
+        btnColonne2 = new javax.swing.JButton();
+        btnColonne1 = new javax.swing.JButton();
+        btnColonne0 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        btnDiag0 = new javax.swing.JButton();
+        btnDiag1 = new javax.swing.JButton();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        PanneauBoutonVerticaux = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(600, 600));
@@ -61,17 +91,393 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setLayout(PanneauGrilleLayout);
         PanneauGrilleLayout.setHorizontalGroup(
             PanneauGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         PanneauGrilleLayout.setVerticalGroup(
             PanneauGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
 
-        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 360, 360));
+        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 400, 400));
+
+        btnLigne0.setText("0");
+        btnLigne0.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnLigne0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLigne0ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLigne0, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
+
+        btnLigne1.setText("1");
+        btnLigne1.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnLigne1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLigne1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLigne1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+
+        btnLigne2.setText("2");
+        btnLigne2.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnLigne2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLigne2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLigne2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+
+        btnLigne3.setText("3");
+        btnLigne3.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnLigne3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLigne3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLigne3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+
+        btnLigne4.setText("4");
+        btnLigne4.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnLigne4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLigne4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLigne4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
+
+        btnLigne5.setText("5");
+        btnLigne5.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnLigne5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLigne5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLigne5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+
+        btnLigne6.setText("6");
+        btnLigne6.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnLigne6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLigne6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLigne6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
+
+        btnLigne7.setText("7");
+        btnLigne7.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnLigne7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLigne7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLigne7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
+
+        btnLigne8.setText("8");
+        btnLigne8.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnLigne8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLigne8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLigne8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, -1, -1));
+
+        btnLigne9.setText("9");
+        btnLigne9.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnLigne9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLigne9ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLigne9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, -1, -1));
+
+        btnColonne9.setText("9");
+        btnColonne9.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnColonne9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColonne9ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnColonne9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, -1, -1));
+
+        btnColonne8.setText("8");
+        btnColonne8.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnColonne8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColonne8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnColonne8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 460, -1, -1));
+
+        btnColonne7.setText("7");
+        btnColonne7.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnColonne7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColonne7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnColonne7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 460, -1, -1));
+
+        btnColonne6.setText("6");
+        btnColonne6.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnColonne6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColonne6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnColonne6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 460, -1, -1));
+
+        btnColonne5.setText("5");
+        btnColonne5.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnColonne5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColonne5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnColonne5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, -1, -1));
+
+        btnColonne4.setText("4");
+        btnColonne4.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnColonne4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColonne4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnColonne4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, -1, -1));
+
+        btnColonne3.setText("3");
+        btnColonne3.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnColonne3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColonne3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnColonne3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, -1, -1));
+
+        btnColonne2.setText("2");
+        btnColonne2.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnColonne2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColonne2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnColonne2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, -1, -1));
+
+        btnColonne1.setText("1");
+        btnColonne1.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnColonne1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColonne1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnColonne1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 460, -1, -1));
+
+        btnColonne0.setText("0");
+        btnColonne0.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnColonne0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColonne0ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnColonne0, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, -1, -1));
+
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 200, 30));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 470, -1));
+
+        btnDiag0.setBackground(new java.awt.Color(255, 255, 105));
+        btnDiag0.setText("0");
+        btnDiag0.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnDiag0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDiag0ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDiag0, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, -1, -1));
+
+        btnDiag1.setBackground(new java.awt.Color(255, 255, 105));
+        btnDiag1.setText("0");
+        btnDiag1.setPreferredSize(new java.awt.Dimension(25, 25));
+        btnDiag1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDiag1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDiag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, -1, -1));
+
+        jProgressBar1.setForeground(new java.awt.Color(51, 153, 255));
+        getContentPane().add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 520, 190, 20));
+
+        PanneauBoutonVerticaux.setBackground(new java.awt.Color(204, 204, 255));
+
+        javax.swing.GroupLayout PanneauBoutonVerticauxLayout = new javax.swing.GroupLayout(PanneauBoutonVerticaux);
+        PanneauBoutonVerticaux.setLayout(PanneauBoutonVerticauxLayout);
+        PanneauBoutonVerticauxLayout.setHorizontalGroup(
+            PanneauBoutonVerticauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        PanneauBoutonVerticauxLayout.setVerticalGroup(
+            PanneauBoutonVerticauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(PanneauBoutonVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 40, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLigne0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLigne0ActionPerformed
+        this.grille.activerLigneDeCellules(0);
+        int nbrCellulesetteinte = nbLignes*nbColonnes - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnLigne0ActionPerformed
+
+    private void btnLigne1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLigne1ActionPerformed
+        this.grille.activerLigneDeCellules(1);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnLigne1ActionPerformed
+
+    private void btnLigne2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLigne2ActionPerformed
+        this.grille.activerLigneDeCellules(2);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnLigne2ActionPerformed
+
+    private void btnLigne3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLigne3ActionPerformed
+        this.grille.activerLigneDeCellules(3);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnLigne3ActionPerformed
+
+    private void btnLigne4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLigne4ActionPerformed
+        this.grille.activerLigneDeCellules(4);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnLigne4ActionPerformed
+
+    private void btnLigne5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLigne5ActionPerformed
+        this.grille.activerLigneDeCellules(5);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnLigne5ActionPerformed
+
+    private void btnLigne6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLigne6ActionPerformed
+        this.grille.activerLigneDeCellules(6);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnLigne6ActionPerformed
+
+    private void btnLigne7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLigne7ActionPerformed
+        this.grille.activerLigneDeCellules(7);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnLigne7ActionPerformed
+
+    private void btnLigne8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLigne8ActionPerformed
+        this.grille.activerLigneDeCellules(8);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnLigne8ActionPerformed
+
+    private void btnLigne9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLigne9ActionPerformed
+        this.grille.activerLigneDeCellules(9);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnLigne9ActionPerformed
+
+    private void btnColonne9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColonne9ActionPerformed
+        this.grille.activerColonneDeCellules(9);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnColonne9ActionPerformed
+
+    private void btnColonne8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColonne8ActionPerformed
+        this.grille.activerColonneDeCellules(8);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnColonne8ActionPerformed
+
+    private void btnColonne7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColonne7ActionPerformed
+        this.grille.activerColonneDeCellules(7);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnColonne7ActionPerformed
+
+    private void btnColonne6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColonne6ActionPerformed
+        this.grille.activerColonneDeCellules(6);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnColonne6ActionPerformed
+
+    private void btnColonne5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColonne5ActionPerformed
+        this.grille.activerColonneDeCellules(5);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnColonne5ActionPerformed
+
+    private void btnColonne4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColonne4ActionPerformed
+        this.grille.activerColonneDeCellules(4);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnColonne4ActionPerformed
+
+    private void btnColonne3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColonne3ActionPerformed
+        this.grille.activerColonneDeCellules(3);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnColonne3ActionPerformed
+
+    private void btnColonne2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColonne2ActionPerformed
+        this.grille.activerColonneDeCellules(2);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnColonne2ActionPerformed
+
+    private void btnColonne1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColonne1ActionPerformed
+        this.grille.activerColonneDeCellules(1);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnColonne1ActionPerformed
+
+    private void btnColonne0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColonne0ActionPerformed
+        this.grille.activerColonneDeCellules(0);
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnColonne0ActionPerformed
+
+    private void btnDiag0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiag0ActionPerformed
+        this.grille.activerDiagonaleMontante();
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnDiag0ActionPerformed
+
+    private void btnDiag1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiag1ActionPerformed
+        this.grille.activerDiagonaleDescendante();
+        int nbrCellulesetteinte = 100 - grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+    }//GEN-LAST:event_btnDiag1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,6 +515,32 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PanneauBoutonVerticaux;
     private javax.swing.JPanel PanneauGrille;
+    private javax.swing.JButton btnColonne0;
+    private javax.swing.JButton btnColonne1;
+    private javax.swing.JButton btnColonne2;
+    private javax.swing.JButton btnColonne3;
+    private javax.swing.JButton btnColonne4;
+    private javax.swing.JButton btnColonne5;
+    private javax.swing.JButton btnColonne6;
+    private javax.swing.JButton btnColonne7;
+    private javax.swing.JButton btnColonne8;
+    private javax.swing.JButton btnColonne9;
+    private javax.swing.JButton btnDiag0;
+    private javax.swing.JButton btnDiag1;
+    private javax.swing.JButton btnLigne0;
+    private javax.swing.JButton btnLigne1;
+    private javax.swing.JButton btnLigne2;
+    private javax.swing.JButton btnLigne3;
+    private javax.swing.JButton btnLigne4;
+    private javax.swing.JButton btnLigne5;
+    private javax.swing.JButton btnLigne6;
+    private javax.swing.JButton btnLigne7;
+    private javax.swing.JButton btnLigne8;
+    private javax.swing.JButton btnLigne9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
