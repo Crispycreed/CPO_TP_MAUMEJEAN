@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -77,12 +78,24 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.revalidate();
 
 
+        
+        
+        
+        
+        
         jProgressBar1.setMaximum(nbLignes * nbColonnes);
         jProgressBar1.setMinimum(0);
         int nbrCellulesetteinte = grille.combiendecellulesencoreallumés();
         jProgressBar1.setValue(nbrCellulesetteinte);
         repaint();
 
+        
+        
+        
+        
+        
+        
+        
         // création du panneau de boutons verticaux (pour les lignes)
         for (i = 0; i < nbLignes; i++) {
             JButton bouton_ligne = new JButton();
@@ -94,8 +107,15 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                     grille.activerLigneDeCellules(j);
                     jProgressBar1.setMaximum(nbLignes * nbColonnes);
                     jProgressBar1.setMinimum(0);
-                    int nbrCellulesetteinte = grille.combiendecellulesencoreallumés();
-                    jProgressBar1.setValue(nbrCellulesetteinte);
+                    int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
+                    jProgressBar1.setValue(nbrCelluesetteintes);
+                    
+                    if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
+                        dispose();
+                        FenetreVictoire f = new FenetreVictoire() ;
+                        f.setVisible(true) ;
+                        
+                    }
                     repaint();
                 }
             };
@@ -114,8 +134,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                     grille.activerColonneDeCellules(j);
                     jProgressBar1.setMaximum(nbLignes * nbColonnes);
                     jProgressBar1.setMinimum(0);
-                    int nbrCellulesetteinte = grille.combiendecellulesencoreallumés();
-                    jProgressBar1.setValue(nbrCellulesetteinte);
+                    int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
+                    jProgressBar1.setValue(nbrCelluesetteintes);
+                    
+                    if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
+                        dispose();
+                        FenetreVictoire f = new FenetreVictoire() ;
+                        f.setVisible(true) ;
+                    }
                     repaint();
                 }
             };
@@ -131,11 +157,17 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 grille.activerDiagonaleMontante();
-                jProgressBar1.setMaximum(nbLignes * nbColonnes);
-                jProgressBar1.setMinimum(0);
-                int nbrCellulesetteinte = grille.combiendecellulesencoreallumés();
-                jProgressBar1.setValue(nbrCellulesetteinte);
-                repaint();
+                    jProgressBar1.setMaximum(nbLignes * nbColonnes);
+                    jProgressBar1.setMinimum(0);
+                    int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
+                    jProgressBar1.setValue(nbrCelluesetteintes);
+                    
+                    if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
+                        dispose();
+                        FenetreVictoire f = new FenetreVictoire() ;
+                        f.setVisible(true) ;
+                    }
+                    repaint();
             }
         };
         bouton_diag1.addActionListener(ecouteurClick);
@@ -149,11 +181,17 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 grille.activerDiagonaleDescendante();
-                jProgressBar1.setMaximum(nbLignes * nbColonnes);
-                jProgressBar1.setMinimum(0);
-                int nbrCellulesetteinte = grille.combiendecellulesencoreallumés();
-                jProgressBar1.setValue(nbrCellulesetteinte);
-                repaint();
+                    jProgressBar1.setMaximum(nbLignes * nbColonnes);
+                    jProgressBar1.setMinimum(0);
+                    int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
+                    jProgressBar1.setValue(nbrCelluesetteintes);
+                    
+                    if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
+                        dispose();
+                        FenetreVictoire f = new FenetreVictoire() ;
+                        f.setVisible(true) ;
+                    }
+                    repaint();
             }
         };
         bouton_diag2.addActionListener(ecouteurClick2);
