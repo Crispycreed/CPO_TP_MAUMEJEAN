@@ -46,11 +46,8 @@ public class Partie {
      * @param nbTours Le nombre de tours de mélange.
      */
     public void initialiserPartie() {
-        Scanner scanner = new Scanner(System.in);
 
-        int nbTours;
-        System.out.print("Entrez le nombre de Tours de la matrice : ");
-        nbTours = scanner.nextInt();
+        int nbTours = 5;
         grille.melangerMatriceAleatoirement(nbTours);
     }
 

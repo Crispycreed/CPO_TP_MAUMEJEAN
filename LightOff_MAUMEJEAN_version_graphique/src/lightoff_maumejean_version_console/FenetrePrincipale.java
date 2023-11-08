@@ -1,4 +1,5 @@
 package lightoff_maumejean_version_console;
+
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -9,90 +10,91 @@ import javax.swing.JButton;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author MAUMEJEAN DENIS
  */
 public class FenetrePrincipale extends javax.swing.JFrame {
+
     GrilleDeJeu grille;
     int nbCoups;
     int i;
     int nbLignes = 8;
     int nbColonnes = 8;
+
     /**
      * Creates new form FenetrePrincipale
      */
     public FenetrePrincipale() {
+        
         initComponents();
-        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, nbColonnes*40, nbLignes*40));
+        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, nbColonnes * 40, nbLignes * 40));
         this.pack();
         this.revalidate();
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
         
-        for (int i=0; i < nbLignes; i++) {
-            for (int j=0; j < nbColonnes; j++ ) {
-                CelluleGraphique bouton_cellule = new CelluleGraphique( grille.matriceCellules[i][j], 36,36);
+        this.initialiserPartie();
+        
+        for (int i = 0; i < nbLignes; i++) {
+            for (int j = 0; j < nbColonnes; j++) {
+                CelluleGraphique bouton_cellule = new CelluleGraphique(grille.matriceCellules[i][j], 36, 36);
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
-        
-        
+
         }
         
         
         
-        
-        
-        
-        
+
         PanneauBoutonsVerticaux.setLayout(new GridLayout(nbLignes, 1));
         getContentPane().add(PanneauBoutonsVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 1 * 40, nbLignes * 40));
         this.pack();
         this.revalidate();
-        
+
         PanneauBoutonsHorizontaux.setLayout(new GridLayout(1, nbColonnes)); // Inverser les arguments pour avoir 1 ligne et plusieurs colonnes
-        int PositionEnBas = (nbColonnes*40)+40;
+        int PositionEnBas = (nbColonnes * 40) + 40;
         getContentPane().add(PanneauBoutonsHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, PositionEnBas, nbColonnes * 40, 1 * 40)); // Ajuster les dimensions pour la grille horizontale
         this.pack();
         this.revalidate();
-        
-        PanneauBoutonsEnBasGauche.setLayout(new GridLayout(1,1));
-        getContentPane().add(PanneauBoutonsEnBasGauche, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, PositionEnBas-5, 40, 40));
+
+        PanneauBoutonsEnBasGauche.setLayout(new GridLayout(1, 1));
+        getContentPane().add(PanneauBoutonsEnBasGauche, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, PositionEnBas - 5, 40, 40));
         this.pack();
         this.revalidate();
 
-        PanneauBoutonsEnBasDroite.setLayout(new GridLayout(1,1));
-        int PositionEnBas2 = 110+(nbLignes*40);
-        getContentPane().add(PanneauBoutonsEnBasDroite, new org.netbeans.lib.awtextra.AbsoluteConstraints(PositionEnBas2, PositionEnBas-5, 40, 40));
+        int PositionEnBas2 = 110 + (nbLignes * 40);
+        
+        PanneauBoutonsEnBasDroite2.setLayout(new GridLayout(1, 1));
+        getContentPane().add(PanneauBoutonsEnBasDroite2, new org.netbeans.lib.awtextra.AbsoluteConstraints(PositionEnBas2, PositionEnBas - 5, 40, 40));
         this.pack();
         this.revalidate();
         
-        
-        PanneauAvancement.setLayout(new GridLayout(nbLignes,1));
-        int Position3 = 110+(nbLignes*40);
-        getContentPane().add(PanneauAvancement, new org.netbeans.lib.awtextra.AbsoluteConstraints(PositionEnBas2+10, 20, 20, nbLignes*(nbLignes*40)));
+        PanneauAvancement.setLayout(new GridLayout(nbLignes, 1));
+        int Position3 = 110 + (nbLignes * 40);
+        getContentPane().add(PanneauAvancement, new org.netbeans.lib.awtextra.AbsoluteConstraints(PositionEnBas2 + 10, 20, 20, nbLignes * (nbLignes * 40)));
         this.pack();
         this.revalidate();
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+        jProgressBar1.setMaximum(nbLignes * nbColonnes);
+        jProgressBar1.setMinimum(0);
+        int nbrCellulesetteinte = grille.combiendecellulesencoreallumés();
+        jProgressBar1.setValue(nbrCellulesetteinte);
+        repaint();
+
         // création du panneau de boutons verticaux (pour les lignes)
         for (i = 0; i < nbLignes; i++) {
             JButton bouton_ligne = new JButton();
             ActionListener ecouteurClick = new ActionListener() {
                 final int j = i;
+
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     grille.activerLigneDeCellules(j);
-                    jProgressBar1.setMaximum(nbLignes*nbColonnes);
+                    jProgressBar1.setMaximum(nbLignes * nbColonnes);
                     jProgressBar1.setMinimum(0);
-                    int nbrCellulesetteinte = nbLignes*nbColonnes - grille.combiendecellulesencoreallumés();
+                    int nbrCellulesetteinte = grille.combiendecellulesencoreallumés();
                     jProgressBar1.setValue(nbrCellulesetteinte);
                     repaint();
                 }
@@ -100,20 +102,19 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             bouton_ligne.addActionListener(ecouteurClick);
             PanneauBoutonsVerticaux.add(bouton_ligne);
         }
-        
-        
-        
+
         // création du panneau de boutons vhorizontaux
         for (i = 0; i < nbColonnes; i++) {
             JButton bouton_Colonnes = new JButton();
             ActionListener ecouteurClick = new ActionListener() {
                 final int j = i;
+
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     grille.activerColonneDeCellules(j);
-                    jProgressBar1.setMaximum(nbLignes*nbColonnes);
+                    jProgressBar1.setMaximum(nbLignes * nbColonnes);
                     jProgressBar1.setMinimum(0);
-                    int nbrCellulesetteinte = nbLignes*nbColonnes - grille.combiendecellulesencoreallumés();
+                    int nbrCellulesetteinte = grille.combiendecellulesencoreallumés();
                     jProgressBar1.setValue(nbrCellulesetteinte);
                     repaint();
                 }
@@ -121,56 +122,49 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             bouton_Colonnes.addActionListener(ecouteurClick);
             PanneauBoutonsHorizontaux.add(bouton_Colonnes);
         }
-        
-        
-        
+
         // création du panneau de boutons diag montante
         JButton bouton_diag1 = new JButton();
         ActionListener ecouteurClick = new ActionListener() {
             final int j = i;
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 grille.activerDiagonaleMontante();
-                jProgressBar1.setMaximum(nbLignes*nbColonnes);
+                jProgressBar1.setMaximum(nbLignes * nbColonnes);
                 jProgressBar1.setMinimum(0);
-                int nbrCellulesetteinte = nbLignes*nbColonnes - grille.combiendecellulesencoreallumés();
+                int nbrCellulesetteinte = grille.combiendecellulesencoreallumés();
                 jProgressBar1.setValue(nbrCellulesetteinte);
                 repaint();
             }
         };
         bouton_diag1.addActionListener(ecouteurClick);
         PanneauBoutonsEnBasGauche.add(bouton_diag1);
-        
+
         // création du panneau de boutons diag DESCENDANTE
         JButton bouton_diag2 = new JButton();
         ActionListener ecouteurClick2 = new ActionListener() {
             final int j = i;
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 grille.activerDiagonaleDescendante();
-                jProgressBar1.setMaximum(nbLignes*nbColonnes);
+                jProgressBar1.setMaximum(nbLignes * nbColonnes);
                 jProgressBar1.setMinimum(0);
-                int nbrCellulesetteinte = nbLignes*nbColonnes - grille.combiendecellulesencoreallumés();
+                int nbrCellulesetteinte = grille.combiendecellulesencoreallumés();
                 jProgressBar1.setValue(nbrCellulesetteinte);
                 repaint();
             }
         };
-        bouton_diag2.addActionListener(ecouteurClick);
-        PanneauBoutonsEnBasDroite.add(bouton_diag2);        
-        
-        
-        
-        
-        
-        
+        bouton_diag2.addActionListener(ecouteurClick2);
+        PanneauBoutonsEnBasDroite2.add(bouton_diag2);
 
     }
-    
+
     public void initialiserPartie() {
         grille.eteindreToutesLesCellules();
         grille.melangerMatriceAleatoirement(10);
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -186,16 +180,20 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauBoutonsVerticaux = new javax.swing.JPanel();
         PanneauBoutonsHorizontaux = new javax.swing.JPanel();
         PanneauBoutonsEnBasGauche = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        PanneauBoutonsEnBasDroite = new javax.swing.JPanel();
         PanneauAvancement = new javax.swing.JPanel();
         jProgressBar1 = new javax.swing.JProgressBar();
+        jPanel1 = new javax.swing.JPanel();
+        jSlider2 = new javax.swing.JSlider();
+        jSlider1 = new javax.swing.JSlider();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        PanneauBoutonsEnBasDroite2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(650, 650));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanneauGrille.setBackground(new java.awt.Color(102, 102, 255));
+        PanneauGrille.setBackground(new java.awt.Color(51, 153, 0));
         PanneauGrille.setPreferredSize(new java.awt.Dimension(360, 360));
 
         javax.swing.GroupLayout PanneauGrilleLayout = new javax.swing.GroupLayout(PanneauGrille);
@@ -212,7 +210,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 400, 400));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 480, -1));
 
-        PanneauBoutonsVerticaux.setBackground(new java.awt.Color(204, 204, 255));
+        PanneauBoutonsVerticaux.setBackground(new java.awt.Color(0, 204, 0));
 
         javax.swing.GroupLayout PanneauBoutonsVerticauxLayout = new javax.swing.GroupLayout(PanneauBoutonsVerticaux);
         PanneauBoutonsVerticaux.setLayout(PanneauBoutonsVerticauxLayout);
@@ -227,7 +225,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(PanneauBoutonsVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 40, 400));
 
-        PanneauBoutonsHorizontaux.setBackground(new java.awt.Color(204, 204, 255));
+        PanneauBoutonsHorizontaux.setBackground(new java.awt.Color(0, 204, 0));
 
         javax.swing.GroupLayout PanneauBoutonsHorizontauxLayout = new javax.swing.GroupLayout(PanneauBoutonsHorizontaux);
         PanneauBoutonsHorizontaux.setLayout(PanneauBoutonsHorizontauxLayout);
@@ -242,7 +240,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(PanneauBoutonsHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, 400, 40));
 
-        PanneauBoutonsEnBasGauche.setBackground(new java.awt.Color(204, 204, 255));
+        PanneauBoutonsEnBasGauche.setBackground(new java.awt.Color(0, 255, 0));
         PanneauBoutonsEnBasGauche.setPreferredSize(new java.awt.Dimension(40, 40));
 
         javax.swing.GroupLayout PanneauBoutonsEnBasGaucheLayout = new javax.swing.GroupLayout(PanneauBoutonsEnBasGauche);
@@ -256,26 +254,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        getContentPane().add(PanneauBoutonsEnBasGauche, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, -1, -1));
-
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 200, 30));
-
-        PanneauBoutonsEnBasDroite.setBackground(new java.awt.Color(204, 204, 255));
-        PanneauBoutonsEnBasDroite.setPreferredSize(new java.awt.Dimension(40, 40));
-
-        javax.swing.GroupLayout PanneauBoutonsEnBasDroiteLayout = new javax.swing.GroupLayout(PanneauBoutonsEnBasDroite);
-        PanneauBoutonsEnBasDroite.setLayout(PanneauBoutonsEnBasDroiteLayout);
-        PanneauBoutonsEnBasDroiteLayout.setHorizontalGroup(
-            PanneauBoutonsEnBasDroiteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        PanneauBoutonsEnBasDroiteLayout.setVerticalGroup(
-            PanneauBoutonsEnBasDroiteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(PanneauBoutonsEnBasDroite, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, -1, -1));
+        getContentPane().add(PanneauBoutonsEnBasGauche, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, -1, -1));
 
         jProgressBar1.setForeground(new java.awt.Color(0, 153, 255));
         jProgressBar1.setOrientation(1);
@@ -303,7 +282,62 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                     .addGap(30, 30, 30)))
         );
 
-        getContentPane().add(PanneauAvancement, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 50, 400));
+        getContentPane().add(PanneauAvancement, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 50, 400));
+
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+
+        jLabel2.setText("Lignes");
+
+        jLabel3.setText("Colonnes");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 160, 60));
+
+        PanneauBoutonsEnBasDroite2.setBackground(new java.awt.Color(0, 255, 0));
+        PanneauBoutonsEnBasDroite2.setPreferredSize(new java.awt.Dimension(40, 40));
+
+        javax.swing.GroupLayout PanneauBoutonsEnBasDroite2Layout = new javax.swing.GroupLayout(PanneauBoutonsEnBasDroite2);
+        PanneauBoutonsEnBasDroite2.setLayout(PanneauBoutonsEnBasDroite2Layout);
+        PanneauBoutonsEnBasDroite2Layout.setHorizontalGroup(
+            PanneauBoutonsEnBasDroite2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        PanneauBoutonsEnBasDroite2Layout.setVerticalGroup(
+            PanneauBoutonsEnBasDroite2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(PanneauBoutonsEnBasDroite2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -341,20 +375,22 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 new FenetrePrincipale().setVisible(true);
             }
         });
-        
-        
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanneauAvancement;
-    private javax.swing.JPanel PanneauBoutonsEnBasDroite;
+    private javax.swing.JPanel PanneauBoutonsEnBasDroite2;
     private javax.swing.JPanel PanneauBoutonsEnBasGauche;
     private javax.swing.JPanel PanneauBoutonsHorizontaux;
     private javax.swing.JPanel PanneauBoutonsVerticaux;
     private javax.swing.JPanel PanneauGrille;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSlider jSlider1;
+    private javax.swing.JSlider jSlider2;
     // End of variables declaration//GEN-END:variables
 }
