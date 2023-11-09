@@ -6,6 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -23,6 +27,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     DebutPartie1 debutPartie = new DebutPartie1();
     private int nbColonnes;
     private int nbLignes;
+     
+
 
     /**
      * Creates new form FenetrePrincipale
@@ -31,17 +37,28 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.nbColonnes = nbColonnes;
         this.nbLignes = nbLignes;
         initComponents();
-        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, nbColonnes * 40, nbLignes * 40));
+        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, nbColonnes * 40, nbLignes * 40));
         this.pack();
         this.revalidate();
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
+        
+        
+       
+        
+        
+        
+                
+
+        
+        
         System.out.print(nbColonnes);
         this.initialiserPartie();
         
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 CelluleGraphique bouton_cellule = new CelluleGraphique(grille.matriceCellules[i][j], 36, 36);
+                
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
 
@@ -50,22 +67,22 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
 
         PanneauBoutonsVerticaux.setLayout(new GridLayout(nbLignes, 1));
-        getContentPane().add(PanneauBoutonsVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 1 * 40, nbLignes * 40));
+        getContentPane().add(PanneauBoutonsVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1 * 40, nbLignes * 40));
         this.pack();
         this.revalidate();
 
         PanneauBoutonsHorizontaux.setLayout(new GridLayout(1, nbColonnes)); // Inverser les arguments pour avoir 1 ligne et plusieurs colonnes
         int PositionEnBas = (nbLignes * 40) + 40;
-        getContentPane().add(PanneauBoutonsHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, PositionEnBas, nbColonnes * 40, 1 * 40)); // Ajuster les dimensions pour la grille horizontale
+        getContentPane().add(PanneauBoutonsHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, PositionEnBas, nbColonnes * 40, 1 * 40)); // Ajuster les dimensions pour la grille horizontale
         this.pack();
         this.revalidate();
 
         PanneauBoutonsEnBasGauche.setLayout(new GridLayout(1, 1));
-        getContentPane().add(PanneauBoutonsEnBasGauche, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, PositionEnBas - 5, 40, 40));
+        getContentPane().add(PanneauBoutonsEnBasGauche, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, PositionEnBas - 5, 40, 40));
         this.pack();
         this.revalidate();
 
-        int PositionEnBas2 = 110 + (nbColonnes * 40);
+        int PositionEnBas2 = 90 + (nbColonnes * 40);
         
         PanneauBoutonsEnBasDroite2.setLayout(new GridLayout(1, 1));
         getContentPane().add(PanneauBoutonsEnBasDroite2, new org.netbeans.lib.awtextra.AbsoluteConstraints(PositionEnBas2, PositionEnBas - 5, 40, 40));
@@ -223,7 +240,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauBoutonsEnBasDroite2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(650, 650));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanneauGrille.setBackground(new java.awt.Color(51, 153, 0));
@@ -332,7 +349,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(PanneauBoutonsEnBasDroite2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, -1, -1));
 
-        pack();
+        setBounds(0, 0, 602, 518);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -344,6 +361,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
