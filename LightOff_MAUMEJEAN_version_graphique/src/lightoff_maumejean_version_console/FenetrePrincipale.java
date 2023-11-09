@@ -20,21 +20,23 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     GrilleDeJeu grille;
     int nbCoups;
     int i;
-    int nbLignes = 8;
-    int nbColonnes = 8;
+    DebutPartie1 debutPartie = new DebutPartie1();
+    private int nbColonnes;
+    private int nbLignes;
 
     /**
      * Creates new form FenetrePrincipale
      */
-    public FenetrePrincipale() {
-        
+    public FenetrePrincipale(int nbColonnes, int nbLignes) {
+        this.nbColonnes = nbColonnes;
+        this.nbLignes = nbLignes;
         initComponents();
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, nbColonnes * 40, nbLignes * 40));
         this.pack();
         this.revalidate();
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
-        
+        System.out.print(nbColonnes);
         this.initialiserPartie();
         
         for (int i = 0; i < nbLignes; i++) {
@@ -45,8 +47,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         }
         
-        
-        
+
 
         PanneauBoutonsVerticaux.setLayout(new GridLayout(nbLignes, 1));
         getContentPane().add(PanneauBoutonsVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 1 * 40, nbLignes * 40));
@@ -54,7 +55,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.revalidate();
 
         PanneauBoutonsHorizontaux.setLayout(new GridLayout(1, nbColonnes)); // Inverser les arguments pour avoir 1 ligne et plusieurs colonnes
-        int PositionEnBas = (nbColonnes * 40) + 40;
+        int PositionEnBas = (nbLignes * 40) + 40;
         getContentPane().add(PanneauBoutonsHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, PositionEnBas, nbColonnes * 40, 1 * 40)); // Ajuster les dimensions pour la grille horizontale
         this.pack();
         this.revalidate();
@@ -64,7 +65,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.pack();
         this.revalidate();
 
-        int PositionEnBas2 = 110 + (nbLignes * 40);
+        int PositionEnBas2 = 110 + (nbColonnes * 40);
         
         PanneauBoutonsEnBasDroite2.setLayout(new GridLayout(1, 1));
         getContentPane().add(PanneauBoutonsEnBasDroite2, new org.netbeans.lib.awtextra.AbsoluteConstraints(PositionEnBas2, PositionEnBas - 5, 40, 40));
@@ -214,17 +215,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void initComponents() {
 
         PanneauGrille = new javax.swing.JPanel();
-        jSeparator1 = new javax.swing.JSeparator();
         PanneauBoutonsVerticaux = new javax.swing.JPanel();
         PanneauBoutonsHorizontaux = new javax.swing.JPanel();
         PanneauBoutonsEnBasGauche = new javax.swing.JPanel();
         PanneauAvancement = new javax.swing.JPanel();
         jProgressBar1 = new javax.swing.JProgressBar();
-        jPanel1 = new javax.swing.JPanel();
-        jSlider2 = new javax.swing.JSlider();
-        jSlider1 = new javax.swing.JSlider();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         PanneauBoutonsEnBasDroite2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -246,7 +241,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         );
 
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 400, 400));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 480, -1));
 
         PanneauBoutonsVerticaux.setBackground(new java.awt.Color(0, 204, 0));
 
@@ -306,9 +300,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             .addGap(0, 50, Short.MAX_VALUE)
             .addGroup(PanneauAvancementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanneauAvancementLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 15, Short.MAX_VALUE)
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 15, Short.MAX_VALUE)))
         );
         PanneauAvancementLayout.setVerticalGroup(
             PanneauAvancementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,45 +315,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         );
 
         getContentPane().add(PanneauAvancement, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 50, 400));
-
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
-
-        jLabel2.setText("Lignes");
-
-        jLabel3.setText("Colonnes");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 160, 60));
 
         PanneauBoutonsEnBasDroite2.setBackground(new java.awt.Color(0, 255, 0));
         PanneauBoutonsEnBasDroite2.setPreferredSize(new java.awt.Dimension(40, 40));
@@ -407,12 +362,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FenetrePrincipale().setVisible(true);
-            }
-        });
+     
 
     }
 
@@ -423,12 +373,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JPanel PanneauBoutonsHorizontaux;
     private javax.swing.JPanel PanneauBoutonsVerticaux;
     private javax.swing.JPanel PanneauGrille;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSlider jSlider1;
-    private javax.swing.JSlider jSlider2;
     // End of variables declaration//GEN-END:variables
 }
