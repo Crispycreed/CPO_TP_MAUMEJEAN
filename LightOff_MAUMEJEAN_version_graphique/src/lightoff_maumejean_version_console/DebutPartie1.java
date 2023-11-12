@@ -18,8 +18,10 @@ public class DebutPartie1 extends javax.swing.JFrame {
 
     int nbLignes = 15;
     int nbColonnes = 15;
+    int nbMelange = 10;
 
     public DebutPartie1() {
+        
         initComponents();
 
         // Définition des valeurs minimales et maximales pour SliderLignes
@@ -29,6 +31,10 @@ public class DebutPartie1 extends javax.swing.JFrame {
         // Définition des valeurs minimales et maximales pour SliderColonnes
         SliderColonnes.setMinimum(2); // Valeur minimale
         SliderColonnes.setMaximum(15); // Valeur maximale
+        
+        // Définition des valeurs minimales et maximales pour SliderColonnes
+        SliderMelange.setMinimum(1); // Valeur minimale
+        SliderMelange.setMaximum(10); // Valeur maximale
 
         // Écouteur de changement pour SliderLignes
         SliderLignes.addChangeListener(new ChangeListener() {
@@ -38,6 +44,7 @@ public class DebutPartie1 extends javax.swing.JFrame {
                 int nouvelleValeur = SliderLignes.getValue();
                 // Mettre à jour nbLignes avec la nouvelle valeur
                 nbLignes = nouvelleValeur;
+                nbrLignes.setText("lignes : " + nbLignes);
             }
         });
 
@@ -49,20 +56,43 @@ public class DebutPartie1 extends javax.swing.JFrame {
                 int nouvelleValeur = SliderColonnes.getValue();
                 // Mettre à jour nbColonnes avec la nouvelle valeur
                 nbColonnes = nouvelleValeur;
+                nbrColonnes.setText("Colonnes : " + nbColonnes);
             }
         });
-
+        
+        nbrLignes.setText("lignes : " + nbLignes);
+        nbrColonnes.setText("Colonnes : " + nbColonnes);
+        nbrMelange.setText(nbMelange*10 + "% Melangé ");
+        
+        
+        
+        // Écouteur de changement pour SliderMelange
+        SliderMelange.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                int nouvelleValeur2 = SliderMelange.getValue();
+                nbMelange = nouvelleValeur2;
+                nbrMelange.setText(nbMelange*10 + "% Melangé ");
+            }
+        });
+        
+        
+        
+        
+        
+        
         LancerPartie.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Code à exécuter lorsque le bouton "LancerPartie" est cliqué.
-                FenetrePrincipale f = new FenetrePrincipale(nbColonnes, nbLignes);
+                FenetrePrincipale f = new FenetrePrincipale(nbColonnes, nbLignes, nbMelange);
+                System.out.print("melange : " + nbMelange);
                 f.setVisible(true);
-                System.out.print(nbColonnes);
                 dispose();
 
             }
         });
+        
 
     }
 
@@ -75,20 +105,32 @@ public class DebutPartie1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        LancerPartie = new javax.swing.JButton();
         Parametrage = new javax.swing.JPanel();
         SliderLignes = new javax.swing.JSlider();
         SliderColonnes = new javax.swing.JSlider();
+        nbrColonnes = new javax.swing.JLabel();
+        nbrLignes = new javax.swing.JLabel();
+        SliderMelange = new javax.swing.JSlider();
+        nbrMelange = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        LancerPartie = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Parametrage.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
-        jLabel2.setText("Lignes");
+        LancerPartie.setText("LANCER PARTIE");
 
-        jLabel3.setText("Colonnes");
+        Parametrage.setBackground(new java.awt.Color(153, 255, 153));
+
+        nbrColonnes.setText("...... Colonnes");
+
+        nbrLignes.setText("....... Lignes");
+
+        nbrMelange.setText("...... % Melange");
 
         javax.swing.GroupLayout ParametrageLayout = new javax.swing.GroupLayout(Parametrage);
         Parametrage.setLayout(ParametrageLayout);
@@ -98,14 +140,18 @@ public class DebutPartie1 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(ParametrageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ParametrageLayout.createSequentialGroup()
-                        .addComponent(SliderColonnes, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ParametrageLayout.createSequentialGroup()
                         .addComponent(SliderLignes, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(nbrLignes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(ParametrageLayout.createSequentialGroup()
+                        .addComponent(SliderColonnes, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nbrColonnes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(ParametrageLayout.createSequentialGroup()
+                        .addComponent(SliderMelange, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nbrMelange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         ParametrageLayout.setVerticalGroup(
             ParametrageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,38 +159,73 @@ public class DebutPartie1 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(ParametrageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SliderLignes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(nbrLignes))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ParametrageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SliderColonnes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addContainerGap(8, Short.MAX_VALUE))
+                    .addComponent(nbrColonnes))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ParametrageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SliderMelange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nbrMelange))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        LancerPartie.setText("LANCER PARTIE");
+        jLabel1.setText("Choisir les paramètres de jeu :");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel2.setText(" Bienvenue sur LightOFF");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
+        jLabel3.setText("MAUMEJEAN.D");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(Parametrage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(LancerPartie)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 64, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jLabel2)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Parametrage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(LancerPartie)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(LancerPartie))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(Parametrage, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(122, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(Parametrage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(LancerPartie)
-                .addContainerGap(106, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -181,6 +262,7 @@ public class DebutPartie1 extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DebutPartie1().setVisible(true);
+                
             }
         });
     }
@@ -190,7 +272,13 @@ public class DebutPartie1 extends javax.swing.JFrame {
     private javax.swing.JPanel Parametrage;
     private javax.swing.JSlider SliderColonnes;
     private javax.swing.JSlider SliderLignes;
+    private javax.swing.JSlider SliderMelange;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel nbrColonnes;
+    private javax.swing.JLabel nbrLignes;
+    private javax.swing.JLabel nbrMelange;
     // End of variables declaration//GEN-END:variables
 }

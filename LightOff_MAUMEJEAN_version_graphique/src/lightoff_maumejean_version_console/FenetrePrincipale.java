@@ -2,8 +2,6 @@ package lightoff_maumejean_version_console;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.*;
@@ -27,32 +25,24 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     DebutPartie1 debutPartie = new DebutPartie1();
     private int nbColonnes;
     private int nbLignes;
+    private int nbMelange;
      
 
 
     /**
      * Creates new form FenetrePrincipale
      */
-    public FenetrePrincipale(int nbColonnes, int nbLignes) {
+    public FenetrePrincipale(int nbColonnes, int nbLignes, int nbMelange) {
         this.nbColonnes = nbColonnes;
         this.nbLignes = nbLignes;
+        this.nbMelange = nbMelange;
+        
         initComponents();
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, nbColonnes * 40, nbLignes * 40));
         this.pack();
         this.revalidate();
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
-        
-        
-       
-        
-        
-        
-                
-
-        
-        
-        System.out.print(nbColonnes);
         this.initialiserPartie();
         
         for (int i = 0; i < nbLignes; i++) {
@@ -127,10 +117,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                     jProgressBar1.setMinimum(0);
                     int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
                     jProgressBar1.setValue(nbrCelluesetteintes);
+                    nbCoups = nbCoups+1;
                     
                     if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
                         dispose();
-                        FenetreVictoire f = new FenetreVictoire() ;
+                        FenetreVictoire f = new FenetreVictoire(nbCoups) ;
                         f.setVisible(true) ;
                         
                     }
@@ -154,10 +145,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                     jProgressBar1.setMinimum(0);
                     int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
                     jProgressBar1.setValue(nbrCelluesetteintes);
+                    nbCoups = nbCoups+1;
                     
                     if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
                         dispose();
-                        FenetreVictoire f = new FenetreVictoire() ;
+                        FenetreVictoire f = new FenetreVictoire(nbCoups) ;
                         f.setVisible(true) ;
                     }
                     repaint();
@@ -179,10 +171,15 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                     jProgressBar1.setMinimum(0);
                     int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
                     jProgressBar1.setValue(nbrCelluesetteintes);
+                    nbCoups = nbCoups +1;
+                    
+                    
+                    System.out.print("nbcoups : " + nbCoups);
+                    
                     
                     if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
                         dispose();
-                        FenetreVictoire f = new FenetreVictoire() ;
+                        FenetreVictoire f = new FenetreVictoire(nbCoups) ;
                         f.setVisible(true) ;
                     }
                     repaint();
@@ -203,10 +200,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                     jProgressBar1.setMinimum(0);
                     int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
                     jProgressBar1.setValue(nbrCelluesetteintes);
+                    nbCoups = nbCoups+1;
                     
                     if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
                         dispose();
-                        FenetreVictoire f = new FenetreVictoire() ;
+                        FenetreVictoire f = new FenetreVictoire(nbCoups) ;
                         f.setVisible(true) ;
                     }
                     repaint();
@@ -219,7 +217,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     public void initialiserPartie() {
         grille.eteindreToutesLesCellules();
-        grille.melangerMatriceAleatoirement(10);
+        grille.melangerMatriceAleatoirement(nbMelange*5);
     }
 
     /**

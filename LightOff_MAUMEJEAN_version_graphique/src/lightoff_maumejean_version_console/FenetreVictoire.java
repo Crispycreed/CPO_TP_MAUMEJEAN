@@ -4,17 +4,39 @@
  */
 package lightoff_maumejean_version_console;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author MAUMEJEAN DENIS
  */
 public class FenetreVictoire extends javax.swing.JFrame {
-
+    private int nbCoups;
     /**
      * Creates new form FenetreVictoire
      */
-    public FenetreVictoire() {
+    public FenetreVictoire(int nbCoups) {
         initComponents();
+        
+        
+        
+        
+        BouttonRelancer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Code à exécuter lorsque le bouton "LancerPartie" est cliqué.
+                DebutPartie1 f = new DebutPartie1();
+                f.setVisible(true);
+                dispose();
+
+            }
+        });
+        
+        AfficherCoups.setText("Tu as gagné en  " + nbCoups + " Coups ");
+        
+        
+        
     }
 
     /**
@@ -27,24 +49,55 @@ public class FenetreVictoire extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        BouttonRelancer = new javax.swing.JButton();
+        AfficherCoups = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lightoff_maumejean_version_console/Screenshot 2023-11-08 232706.png"))); // NOI18N
 
+        BouttonRelancer.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        BouttonRelancer.setText("RELANCER");
+        BouttonRelancer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BouttonRelancerActionPerformed(evt);
+            }
+        });
+
+        AfficherCoups.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        AfficherCoups.setText("Tu as gagné en : .... coups");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 762, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 762, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addComponent(AfficherCoups, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(BouttonRelancer)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BouttonRelancer)
+                    .addComponent(AfficherCoups))
+                .addGap(42, 42, 42))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BouttonRelancerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BouttonRelancerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BouttonRelancerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -74,14 +127,12 @@ public class FenetreVictoire extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FenetreVictoire().setVisible(true);
-            }
-        });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AfficherCoups;
+    private javax.swing.JButton BouttonRelancer;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
