@@ -26,17 +26,21 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private int nbColonnes;
     private int nbLignes;
     private int nbMelange;
-     
-
 
     /**
-     * Creates new form FenetrePrincipale
+     * Fenêtre principale du jeu, affichant la grille de jeu et permettant aux
+     * joueurs d'interagir en activant des lignes, colonnes ou diagonales de
+     * cellules.
+     *
+     * @param nbColonnes Le nombre de colonnes de la grille de jeu.
+     * @param nbLignes Le nombre de lignes de la grille de jeu.
+     * @param nbMelange Le niveau de mélange initial de la grille.
      */
     public FenetrePrincipale(int nbColonnes, int nbLignes, int nbMelange) {
         this.nbColonnes = nbColonnes;
         this.nbLignes = nbLignes;
         this.nbMelange = nbMelange;
-        
+
         initComponents();
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, nbColonnes * 40, nbLignes * 40));
         this.pack();
@@ -44,17 +48,15 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
         this.initialiserPartie();
-        
+
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 CelluleGraphique bouton_cellule = new CelluleGraphique(grille.matriceCellules[i][j], 36, 36);
-                
+
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
 
         }
-        
-
 
         PanneauBoutonsVerticaux.setLayout(new GridLayout(nbLignes, 1));
         getContentPane().add(PanneauBoutonsVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1 * 40, nbLignes * 40));
@@ -73,37 +75,24 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.revalidate();
 
         int PositionEnBas2 = 90 + (nbColonnes * 40);
-        
+
         PanneauBoutonsEnBasDroite2.setLayout(new GridLayout(1, 1));
         getContentPane().add(PanneauBoutonsEnBasDroite2, new org.netbeans.lib.awtextra.AbsoluteConstraints(PositionEnBas2, PositionEnBas - 5, 40, 40));
         this.pack();
         this.revalidate();
-        
+
         PanneauAvancement.setLayout(new GridLayout(nbLignes, 1));
         int Position3 = 110 + (nbLignes * 40);
         getContentPane().add(PanneauAvancement, new org.netbeans.lib.awtextra.AbsoluteConstraints(PositionEnBas2 + 10, 20, 20, nbLignes * (nbLignes * 40)));
         this.pack();
         this.revalidate();
 
-
-        
-        
-        
-        
-        
         jProgressBar1.setMaximum(nbLignes * nbColonnes);
         jProgressBar1.setMinimum(0);
         int nbrCellulesetteinte = grille.combiendecellulesencoreallumés();
         jProgressBar1.setValue(nbrCellulesetteinte);
         repaint();
 
-        
-        
-        
-        
-        
-        
-        
         // création du panneau de boutons verticaux (pour les lignes)
         for (i = 0; i < nbLignes; i++) {
             JButton bouton_ligne = new JButton();
@@ -117,13 +106,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                     jProgressBar1.setMinimum(0);
                     int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
                     jProgressBar1.setValue(nbrCelluesetteintes);
-                    nbCoups = nbCoups+1;
-                    
-                    if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
+                    nbCoups = nbCoups + 1;
+
+                    if ((nbrCelluesetteintes - nbLignes * nbColonnes) == 0) {
                         dispose();
-                        FenetreVictoire f = new FenetreVictoire(nbCoups) ;
-                        f.setVisible(true) ;
-                        
+                        FenetreVictoire f = new FenetreVictoire(nbCoups);
+                        f.setVisible(true);
+
                     }
                     repaint();
                 }
@@ -145,12 +134,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                     jProgressBar1.setMinimum(0);
                     int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
                     jProgressBar1.setValue(nbrCelluesetteintes);
-                    nbCoups = nbCoups+1;
-                    
-                    if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
+                    nbCoups = nbCoups + 1;
+
+                    if ((nbrCelluesetteintes - nbLignes * nbColonnes) == 0) {
                         dispose();
-                        FenetreVictoire f = new FenetreVictoire(nbCoups) ;
-                        f.setVisible(true) ;
+                        FenetreVictoire f = new FenetreVictoire(nbCoups);
+                        f.setVisible(true);
                     }
                     repaint();
                 }
@@ -167,22 +156,20 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 grille.activerDiagonaleMontante();
-                    jProgressBar1.setMaximum(nbLignes * nbColonnes);
-                    jProgressBar1.setMinimum(0);
-                    int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
-                    jProgressBar1.setValue(nbrCelluesetteintes);
-                    nbCoups = nbCoups +1;
-                    
-                    
-                    System.out.print("nbcoups : " + nbCoups);
-                    
-                    
-                    if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
-                        dispose();
-                        FenetreVictoire f = new FenetreVictoire(nbCoups) ;
-                        f.setVisible(true) ;
-                    }
-                    repaint();
+                jProgressBar1.setMaximum(nbLignes * nbColonnes);
+                jProgressBar1.setMinimum(0);
+                int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
+                jProgressBar1.setValue(nbrCelluesetteintes);
+                nbCoups = nbCoups + 1;
+
+                System.out.print("nbcoups : " + nbCoups);
+
+                if ((nbrCelluesetteintes - nbLignes * nbColonnes) == 0) {
+                    dispose();
+                    FenetreVictoire f = new FenetreVictoire(nbCoups);
+                    f.setVisible(true);
+                }
+                repaint();
             }
         };
         bouton_diag1.addActionListener(ecouteurClick);
@@ -196,18 +183,18 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 grille.activerDiagonaleDescendante();
-                    jProgressBar1.setMaximum(nbLignes * nbColonnes);
-                    jProgressBar1.setMinimum(0);
-                    int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
-                    jProgressBar1.setValue(nbrCelluesetteintes);
-                    nbCoups = nbCoups+1;
-                    
-                    if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
-                        dispose();
-                        FenetreVictoire f = new FenetreVictoire(nbCoups) ;
-                        f.setVisible(true) ;
-                    }
-                    repaint();
+                jProgressBar1.setMaximum(nbLignes * nbColonnes);
+                jProgressBar1.setMinimum(0);
+                int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
+                jProgressBar1.setValue(nbrCelluesetteintes);
+                nbCoups = nbCoups + 1;
+
+                if ((nbrCelluesetteintes - nbLignes * nbColonnes) == 0) {
+                    dispose();
+                    FenetreVictoire f = new FenetreVictoire(nbCoups);
+                    f.setVisible(true);
+                }
+                repaint();
             }
         };
         bouton_diag2.addActionListener(ecouteurClick2);
@@ -217,7 +204,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     public void initialiserPartie() {
         grille.eteindreToutesLesCellules();
-        grille.melangerMatriceAleatoirement(nbMelange*5);
+        grille.melangerMatriceAleatoirement(nbMelange * 5);
     }
 
     /**
@@ -360,7 +347,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
 
-        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -378,8 +364,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FenetrePrincipale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-     
 
     }
 

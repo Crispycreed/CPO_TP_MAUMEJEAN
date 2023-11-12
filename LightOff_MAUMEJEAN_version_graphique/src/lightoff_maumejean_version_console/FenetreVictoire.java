@@ -12,16 +12,18 @@ import java.awt.event.ActionListener;
  * @author MAUMEJEAN DENIS
  */
 public class FenetreVictoire extends javax.swing.JFrame {
+
     private int nbCoups;
+
     /**
-     * Creates new form FenetreVictoire
+     * Fenêtre affichée lorsqu'un joueur remporte la partie, indiquant le nombre
+     * de coups nécessaires pour gagner.
+     *
+     * @param nbCoups Le nombre de coups nécessaires pour remporter la partie.
      */
     public FenetreVictoire(int nbCoups) {
         initComponents();
-        
-        
-        
-        
+
         BouttonRelancer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,11 +34,9 @@ public class FenetreVictoire extends javax.swing.JFrame {
 
             }
         });
-        
+
         AfficherCoups.setText("Tu as gagné en  " + nbCoups + " Coups ");
-        
-        
-        
+
     }
 
     /**
@@ -54,7 +54,7 @@ public class FenetreVictoire extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lightoff_maumejean_version_console/Screenshot 2023-11-08 232706.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lightoff_maumejean_version_console/imagewin.png"))); // NOI18N
 
         BouttonRelancer.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         BouttonRelancer.setText("RELANCER");
@@ -75,9 +75,9 @@ public class FenetreVictoire extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 762, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(112, 112, 112)
+                .addGap(110, 110, 110)
                 .addComponent(AfficherCoups, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(39, 39, 39)
                 .addComponent(BouttonRelancer)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -85,11 +85,11 @@ public class FenetreVictoire extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BouttonRelancer)
-                    .addComponent(AfficherCoups))
-                .addGap(42, 42, 42))
+                    .addComponent(AfficherCoups)
+                    .addComponent(BouttonRelancer))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -127,7 +127,6 @@ public class FenetreVictoire extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

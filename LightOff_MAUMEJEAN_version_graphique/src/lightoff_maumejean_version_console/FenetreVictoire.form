@@ -28,9 +28,9 @@
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
               <Component id="AfficherCoups" min="-2" pref="303" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Component id="BouttonRelancer" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -40,12 +40,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="BouttonRelancer" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="AfficherCoups" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BouttonRelancer" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,7 +54,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/lightoff_maumejean_version_console/Screenshot 2023-11-08 232706.png"/>
+          <Image iconType="3" name="/lightoff_maumejean_version_console/imagewin.png"/>
         </Property>
       </Properties>
     </Component>

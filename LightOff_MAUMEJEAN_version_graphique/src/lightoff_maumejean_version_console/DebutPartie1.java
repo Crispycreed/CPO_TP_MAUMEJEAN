@@ -4,6 +4,8 @@
  */
 package lightoff_maumejean_version_console;
 
+import java.awt.Color;
+import static java.awt.Color.black;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JSlider;
@@ -20,8 +22,13 @@ public class DebutPartie1 extends javax.swing.JFrame {
     int nbColonnes = 15;
     int nbMelange = 10;
 
+    /**
+     * Fenêtre de configuration pour le début de la partie. Permet de définir le
+     * nombre de lignes, de colonnes et le niveau de mélange avant de lancer la
+     * partie.
+     */
     public DebutPartie1() {
-        
+
         initComponents();
 
         // Définition des valeurs minimales et maximales pour SliderLignes
@@ -31,7 +38,7 @@ public class DebutPartie1 extends javax.swing.JFrame {
         // Définition des valeurs minimales et maximales pour SliderColonnes
         SliderColonnes.setMinimum(2); // Valeur minimale
         SliderColonnes.setMaximum(15); // Valeur maximale
-        
+
         // Définition des valeurs minimales et maximales pour SliderColonnes
         SliderMelange.setMinimum(1); // Valeur minimale
         SliderMelange.setMaximum(10); // Valeur maximale
@@ -59,28 +66,21 @@ public class DebutPartie1 extends javax.swing.JFrame {
                 nbrColonnes.setText("Colonnes : " + nbColonnes);
             }
         });
-        
+
         nbrLignes.setText("lignes : " + nbLignes);
         nbrColonnes.setText("Colonnes : " + nbColonnes);
-        nbrMelange.setText(nbMelange*10 + "% Melangé ");
-        
-        
-        
+        nbrMelange.setText(nbMelange * 10 + "% Melangé ");
+
         // Écouteur de changement pour SliderMelange
         SliderMelange.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 int nouvelleValeur2 = SliderMelange.getValue();
                 nbMelange = nouvelleValeur2;
-                nbrMelange.setText(nbMelange*10 + "% Melangé ");
+                nbrMelange.setText(nbMelange * 10 + "% Melangé ");
             }
         });
-        
-        
-        
-        
-        
-        
+
         LancerPartie.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -92,7 +92,6 @@ public class DebutPartie1 extends javax.swing.JFrame {
 
             }
         });
-        
 
     }
 
@@ -123,12 +122,19 @@ public class DebutPartie1 extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
         LancerPartie.setText("LANCER PARTIE");
+        LancerPartie.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         Parametrage.setBackground(new java.awt.Color(153, 255, 153));
+
+        SliderLignes.setCursor(new java.awt.Cursor(java.awt.Cursor.E_RESIZE_CURSOR));
+
+        SliderColonnes.setCursor(new java.awt.Cursor(java.awt.Cursor.E_RESIZE_CURSOR));
 
         nbrColonnes.setText("...... Colonnes");
 
         nbrLignes.setText("....... Lignes");
+
+        SliderMelange.setCursor(new java.awt.Cursor(java.awt.Cursor.E_RESIZE_CURSOR));
 
         nbrMelange.setText("...... % Melange");
 
@@ -262,7 +268,7 @@ public class DebutPartie1 extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DebutPartie1().setVisible(true);
-                
+
             }
         });
     }

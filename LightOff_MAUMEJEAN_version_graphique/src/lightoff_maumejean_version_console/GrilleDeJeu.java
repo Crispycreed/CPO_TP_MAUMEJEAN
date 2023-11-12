@@ -3,17 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package lightoff_maumejean_version_console;
+
 import java.util.Random;
 
 /**
- * La classe GrilleDeJeu représente une grille de cellules lumineuses.
- * Cette grille est constituée de cellules lumineuses organisées en lignes 
- * et colonnes.
- * classe qui offre des fonctionnalités pour générer, activer, éteindre et 
- * afficher l'état de ces cellules de manière structurée.
+ * La classe GrilleDeJeu représente une grille de cellules lumineuses. Cette
+ * grille est constituée de cellules lumineuses organisées en lignes et
+ * colonnes. classe qui offre des fonctionnalités pour générer, activer,
+ * éteindre et afficher l'état de ces cellules de manière structurée.
+ *
  * @author MAUMEJEAN DENIS
  */
 public class GrilleDeJeu {
+
     CelluleLumineuse[][] matriceCellules;
     int nbLignes;
     int nbColonnes;
@@ -21,8 +23,8 @@ public class GrilleDeJeu {
     /**
      * Constructeur de la classe GrilleDeJeu.
      *
-     * @param p_nbLignes     Le nombre de lignes de la grille.
-     * @param p_nbColonnes   Le nombre de colonnes de la grille.
+     * @param p_nbLignes Le nombre de lignes de la grille.
+     * @param p_nbColonnes Le nombre de colonnes de la grille.
      */
     public GrilleDeJeu(int p_nbLignes, int p_nbColonnes) {
         nbLignes = p_nbLignes;
@@ -45,11 +47,10 @@ public class GrilleDeJeu {
             }
         }
     }
-    
-    
-  
+
     /**
-     * Active de manière aléatoire une ligne, une colonne ou une diagonale de cellules.
+     * Active de manière aléatoire une ligne, une colonne ou une diagonale de
+     * cellules.
      */
     public void activerLigneColonneOuDiagonaleAleatoire() {
         Random random = new Random();
@@ -75,24 +76,25 @@ public class GrilleDeJeu {
                 break;
         }
     }
-    
-    
-    
+
     /**
-     * permet de générer un plateau de cellules lumineuses de manière aléatoire 
+     * permet de générer un plateau de cellules lumineuses de manière aléatoire
      * à partir d’un nombre spécifié de tours
+     *
      * @param nbTours
      */
-    public void melangerMatriceAleatoirement(int nbTours){
+    public void melangerMatriceAleatoirement(int nbTours) {
         this.eteindreToutesLesCellules();
-        for (int i=0; i<nbTours; i++) activerLigneColonneOuDiagonaleAleatoire();
+        for (int i = 0; i < nbTours; i++) {
+            activerLigneColonneOuDiagonaleAleatoire();
+        }
     }
-    
-    
+
     /**
-    * Active toutes les cellules d'une ligne spécifique de la grille.
-    * @param idLigne Le numéro de la ligne à activer.
-    */
+     * Active toutes les cellules d'une ligne spécifique de la grille.
+     *
+     * @param idLigne Le numéro de la ligne à activer.
+     */
     public void activerLigneDeCellules(int idLigne) {
         for (int colonne = 0; colonne < nbColonnes; colonne++) {
             matriceCellules[idLigne][colonne].activerCellule();
@@ -101,18 +103,19 @@ public class GrilleDeJeu {
 
     /**
      * Active toutes les cellules d'une colonne spécifique de la grille.
-    * @param idColonne Le numéro de la colonne à activer.
-    */
+     *
+     * @param idColonne Le numéro de la colonne à activer.
+     */
     public void activerColonneDeCellules(int idColonne) {
         for (int ligne = 0; ligne < nbLignes; ligne++) {
             matriceCellules[ligne][idColonne].activerCellule();
         }
     }
-    
-    
+
     /**
-    * Active la diagonale descendante de la grille en allumant les cellules correspondantes.
-    */
+     * Active la diagonale descendante de la grille en allumant les cellules
+     * correspondantes.
+     */
     public void activerDiagonaleDescendante() {
         for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) {
             matriceCellules[i][i].activerCellule();
@@ -120,20 +123,20 @@ public class GrilleDeJeu {
     }
 
     /**
-    * Active la diagonale montante de la grille en allumant les cellules correspondantes.
-    */
+     * Active la diagonale montante de la grille en allumant les cellules
+     * correspondantes.
+     */
     public void activerDiagonaleMontante() {
         for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) {
             matriceCellules[i][nbColonnes - 1 - i].activerCellule();
         }
     }
-    
-    
+
     /**
-    * Vérifie si toutes les cellules de la grille sont éteintes.
-    *
-    * @return true si toutes les cellules sont éteintes, false sinon.
-    */
+     * Vérifie si toutes les cellules de la grille sont éteintes.
+     *
+     * @return true si toutes les cellules sont éteintes, false sinon.
+     */
     public boolean cellulesToutesEteintes() {
         for (int ligne = 0; ligne < nbLignes; ligne++) {
             for (int colonne = 0; colonne < nbColonnes; colonne++) {
@@ -144,38 +147,36 @@ public class GrilleDeJeu {
         }
         return true;
     }
-    
-    
+
     /**
-    * Vérifie combien de cellules de la grille sont encore allumé.
-    *
-    * @return le nombre de cellules encore allumé.
-    */
+     * Vérifie combien de cellules de la grille sont encore allumé.
+     *
+     * @return le nombre de cellules encore allumé.
+     */
     public int combiendecellulesencoreallumés() {
-        int ntotalcellules = nbLignes*nbColonnes ;
+        int ntotalcellules = nbLignes * nbColonnes;
         int nbrCelluleseteintes = 0;
 
         for (int ligne = 0; ligne < nbLignes; ligne++) {
             for (int colonne = 0; colonne < nbColonnes; colonne++) {
-                if (!matriceCellules[ligne][colonne].estEteint()) { 
+                if (!matriceCellules[ligne][colonne].estEteint()) {
                     nbrCelluleseteintes++;
                 }
             }
         }
-        
-        int nbrCellulesEncoreAllumés = ntotalcellules - nbrCelluleseteintes ;
+
+        int nbrCellulesEncoreAllumés = ntotalcellules - nbrCelluleseteintes;
 
         return nbrCellulesEncoreAllumés;
     }
 
-
-
     /**
-    * Génère une représentation textuelle de la grille avec des indices pour les lignes et les colonnes,
-    * ainsi que des caractères 'X' et 'O' pour représenter l'état des cellules.
-    *
-    * @return Une chaîne de caractères représentant l'état de la grille.
-    */
+     * Génère une représentation textuelle de la grille avec des indices pour
+     * les lignes et les colonnes, ainsi que des caractères 'X' et 'O' pour
+     * représenter l'état des cellules.
+     *
+     * @return Une chaîne de caractères représentant l'état de la grille.
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -201,10 +202,8 @@ public class GrilleDeJeu {
             }
             sb.append("\n");
         }
-    
+
         return sb.toString();
     }
-
-
 
 }

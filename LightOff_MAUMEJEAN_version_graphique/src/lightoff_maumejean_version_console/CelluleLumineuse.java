@@ -5,10 +5,12 @@
 package lightoff_maumejean_version_console;
 
 /**
- * La classe qui va définir l'état de la cellule lumineuse 
+ * La classe qui va définir l'état de la cellule lumineuse
+ *
  * @author MAUMEJEAN DENIS
  */
 public class CelluleLumineuse {
+
     private boolean etat;
 
     /**
@@ -17,7 +19,6 @@ public class CelluleLumineuse {
     public CelluleLumineuse() {
         etat = false;
     }
-
 
     /**
      * Méthode pour activer la cellule en inversant son état
@@ -33,19 +34,20 @@ public class CelluleLumineuse {
         etat = false;
     }
 
-
     /**
      * Méthode pour vérifier si la cellule est éteinte ou allumée
-     * @return etteint : etat = true ;  allumée etat = false
+     *
+     * @return etteint : etat = true ; allumée etat = false
      */
     public boolean estEteint() {
         return !etat;
     }
 
-
     /**
-     * Méthode pour obtenir l'état actuel de la cellule (true si allumée, false si éteinte)
-     * @return etat 
+     * Méthode pour obtenir l'état actuel de la cellule (true si allumée, false
+     * si éteinte)
+     *
+     * @return etat
      */
     public boolean getEtat() {
         return etat;
@@ -53,6 +55,7 @@ public class CelluleLumineuse {
 
     /**
      * définition de la méthode toString pour afficher l'état de la cellule
+     *
      * @return x si etat = false O si etat = true
      */
     @Override
@@ -60,4 +63,3 @@ public class CelluleLumineuse {
         return etat ? "X" : "O";
     }
 }
-
